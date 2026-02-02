@@ -1,0 +1,1043 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head>  <title>Contenedores y Funciones EstÃąndar de C++</title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='main.css' rel='stylesheet' type='text/css' /> 
+<meta content='main.tex' name='src' /> 
+</head><body>
+   <div class='maketitle'>
+                                                                     
+
+                                                                     
+                                                                     
+
+                                                                     
+
+<h2 class='titleHead'>Contenedores y Funciones Estándar de C++</h2>
+ <div class='author'><span class='ec-qplr-x-x-120'>Miguel B. Gxlois</span></div><br />
+<div class='date'><span class='ec-qplr-x-x-120'>Campamento de Invierno ESCOM 2026</span></div>
+   </div>
+   <h3 class='likesectionHead' id='contenido'><a id='x1-1000'></a>Contenido</h3>
+   <div class='tableofcontents'>
+   <span class='sectionToc'>1 <a href='#contenedores' id='QQ2-1-2'>Contenedores</a></span>
+<br />   <span class='subsectionToc'>1.1 <a href='#contenedores-secuenciales' id='QQ2-1-3'>Contenedores secuenciales</a></span>
+<br />   <span class='subsubsectionToc'>1.1.1 <a href='#stdvector' id='QQ2-1-4'>std::vector</a></span>
+<br />   <span class='subsubsectionToc'>1.1.2 <a href='#stddeque' id='QQ2-1-8'>std::deque</a></span>
+<br />   <span class='subsubsectionToc'>1.1.3 <a href='#stdstack' id='QQ2-1-10'>std::stack</a></span>
+<br />   <span class='subsubsectionToc'>1.1.4 <a href='#stdqueue' id='QQ2-1-13'>std::queue</a></span>
+<br />   <span class='subsectionToc'>1.2 <a href='#contenedores-asociativos' id='QQ2-1-14'>Contenedores Asociativos</a></span>
+<br />   <span class='subsubsectionToc'>1.2.1 <a href='#stdset' id='QQ2-1-15'>std::set</a></span>
+<br />   <span class='subsubsectionToc'>1.2.2 <a href='#stdmap' id='QQ2-1-16'>std::map</a></span>
+<br />   <span class='subsectionToc'>1.3 <a href='#iteracion-sobre-contenedores' id='QQ2-1-17'>Iteración sobre contenedores</a></span>
+<br />   <span class='sectionToc'>2 <a href='#iteradores' id='QQ2-1-18'>Iteradores</a></span>
+<br />   <span class='subsectionToc'>2.1 <a href='#iteradores-de-stdvector-y-stddeque' id='QQ2-1-20'>Iteradores de std::vector y std::deque</a></span>
+<br />   <span class='subsectionToc'>2.2 <a href='#iteradores-de-stdset' id='QQ2-1-21'>Iteradores de std::set</a></span>
+<br />   <span class='sectionToc'>3 <a href='#funciones-de-busqueda' id='QQ2-1-22'>Funciones de búsqueda</a></span>
+<br />   <span class='subsectionToc'>3.1 <a href='#sobre-un-stdvector-ordenado' id='QQ2-1-23'>Sobre un std::vector ordenado</a></span>
+<br />   <span class='subsectionToc'>3.2 <a href='#sobre-un-stdset' id='QQ2-1-24'>Sobre un std::set</a></span>
+   </div>
+   
+                                                                     
+
+                                                                     
+   <h3 class='sectionHead' id='contenedores'><span class='titlemark'>1    </span> <a id='x1-20001'></a>Contenedores</h3>
+<!-- l. 50 --><p class='noindent'>La biblioteca estándar de C++ proveé una colección de estructuras de datos
+útiles para el manejo de datos. Todas estas estructuras funcionan como
+<span class='ec-qplri-x-x-109'>contenedores </span>de datos, para los cuales es posible insertar, remover y consultar
+elementos. Cada una de estas estructuras varía en la manera en que
+se realizan estas operaciones y en el costo computacional asociado a
+éstas.
+</p><!-- l. 52 --><p class='indent'>   Estas estructuras están divididas en dos familias principales: los contenedores
+<span class='ec-qplri-x-x-109'>secuenciales </span>y los contenedores <span class='ec-qplri-x-x-109'>asociativos</span>.
+   
+</p>
+   <h4 class='subsectionHead' id='contenedores-secuenciales'><span class='titlemark'>1.1    </span> <a id='x1-30001.1'></a>Contenedores secuenciales</h4>
+<!-- l. 57 --><p class='noindent'>Los contenedores <span class='ec-qplri-x-x-109'>secuenciales </span>mantienen los elementos dentro de ellos en una
+secuencia lineal simple, como se muestra en la siguiente figura.
+</p>
+<div class='center'>
+<!-- l. 59 --><p class='noindent'>
+</p><!-- l. 60 --><p class='noindent'><img alt='1041722384fb2539roanctk' src='main0x.svg' /></p></div>
+<!-- l. 90 --><p class='indent'>   Cada operación de inserción y remoción de un elemento en un contenedor
+secuencial opera sobre uno de los extremos de esta secuencia.
+</p><!-- l. 92 --><p class='indent'>   Al primer elemento (el extremo izquierdo en el diagrama) dentro de la
+secuencia se le denomina el <span class='ec-qplri-x-x-109'>front </span>y al último (el extremo derecho en el diagrama)
+se le denomina el <span class='ec-qplri-x-x-109'>back</span>.
+   
+</p>
+   <h5 class='subsubsectionHead' id='stdvector'><span class='titlemark'>1.1.1    </span> <a id='x1-40001.1.1'></a>std::vector</h5>
+<!-- l. 97 --><p class='noindent'><code class='lstinline'><span style='color:#000000'>std::vector</span></code> es un contenedor secuencial que permite inserciones y remociones
+del último elemento (el <span class='ec-qplri-x-x-109'>back </span>de la secuencia). Permite también acceso rápido a
+                                                                     
+
+                                                                     
+cualquier elemento de la secuencia dado su posición (iniciando desde la posición
+0). Es la estructura de la biblioteca estándar más usada. En efecto proveé un
+arreglo dinámico al cuál es posible expandir y reducir en su extremo
+derecho.
+   
+</p>
+<!-- l. 99 --><p class='noindent'><span class='paragraphHead' id='declaracion-e-inicializacion'><a id='x1-5000'></a><span class='ec-qplb-x-x-109'>Declaración e inicialización</span></span>
+   existen varias formas de declarar e inicializar un <code class='lstinline'><span style='color:#000000'>std::vector</span></code>. se listan a
+continuación.
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-5002x1'>
+     <!-- l. 101 --><p class='noindent'><span class='ec-qplb-x-x-109'>listando los elementos iniciales. </span>se puede declarar e inicializar un
+     <code class='lstinline'><span style='color:#000000'>std::vector</span></code> con un conjunto definido de valores iniciales dados entre
+     <span class='ec-qplb-x-x-109'>corchetes</span>, de la siguiente manera: </p><!-- l. 102 -->
+     <pre class='lstlisting' id='listing-4'><span class='label'><a id='x1-5003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>vec{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-5004r2'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <!-- l. 105 --><p class='noindent'><code class='lstinline'><span style='color:#000000'>vec</span></code> tiene tamaño 5 y contiene los elementos: {3, 1, 4, 5}.
+     </p></li>
+<li class='enumerate' id='x1-5006x2'>
+     <!-- l. 106 --><p class='noindent'><span class='ec-qplb-x-x-109'>definiendo su tamaño y un valor inicial para </span><span class='ec-qplbi-x-x-109'>todos </span><span class='ec-qplb-x-x-109'>los elementos.</span>
+     se puede proporcionar el tamaño deseado del <code class='lstinline'><span style='color:#000000'>std::vector</span></code> y el
+     valor a colocar en cada uno de sus posiciones, en este caso estos
+     argumentos se escriben entre <span class='ec-qplb-x-x-109'>paréntesis</span>, de la siguiente manera:
+     </p><!-- l. 107 -->
+     <pre class='lstlisting' id='listing-7'><span class='label'><a id='x1-5007r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>vec(3, 1);</span> 
+</span><span class='label'><a id='x1-5008r2'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <!-- l. 110 --><p class='noindent'><code class='lstinline'><span style='color:#000000'>vec</span></code> tiene tamaño 3 y contiene los elementos: {1, 1, 1}.
+     </p></li>
+<li class='enumerate' id='x1-5010x3'>
+     <!-- l. 111 --><p class='noindent'><span class='ec-qplb-x-x-109'>declarándo como un vector vacío. </span>si no se le proporciona ningún
+     argumento, como se muestra a continuación: </p><!-- l. 112 -->
+                                                                     
+
+                                                                     
+     <pre class='lstlisting' id='listing-9'><span class='label'><a id='x1-5011r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>vec;</span> 
+</span><span class='label'><a id='x1-5012r2'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <!-- l. 115 --><p class='noindent'><code class='lstinline'><span style='color:#000000'>vec</span></code> no contiene ningún elemento.</p></li></ol>
+   
+<!-- l. 118 --><p class='noindent'><span class='paragraphHead' id='acceso-a-sus-elementos'><a id='x1-6000'></a><span class='ec-qplb-x-x-109'>Acceso a sus elementos</span></span>
+   se pueden acceder y modificar cualquiera de los elementos de un
+<code class='lstinline'><span style='color:#000000'>std::vector</span></code> de las siguientes tres maneras:
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-6002x1'>
+     <!-- l. 120 --><p class='noindent'><span class='ec-qplb-x-x-109'>Por  su  índice.   </span>Si  se  tiene  un  <code class='lstinline'><span style='color:#000000'>std::vector</span></code> llamado  <code class='lstinline'><span style='color:#000000'>vec</span></code> es  posible
+     acceder a cualquiera de sus elementos dado su índice <code class='lstinline'><span style='color:#000000'>i</span></code> simplemente
+     escribiendo <code class='lstinline'><span style='color:#000000'>vec[i]</span></code>. Este acceso permite tanto lectura como escritura
+     de los elementos del vector.
+</p>
+     <!-- l. 122 -->
+     <pre class='lstlisting' id='listing-16'><span class='label'><a id='x1-6003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>vec{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-6004r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>Imprime el tercer (indice 2) elemento</span> 
+</span><span class='label'><a id='x1-6005r3'></a></span><span style='color:#009900'>       <span class='ectt-1095'>de vec, que es 4 */</span> 
+</span><span class='label'><a id='x1-6006r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; vec[2] &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-6007r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>Modifica el cuarto elemento de vec */</span> 
+</span><span class='label'><a id='x1-6008r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>vec[3] = 7;</span> 
+</span><span class='label'><a id='x1-6009r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>vec ahora contiene {3, 1, 4, 7, 5} */</span> 
+</span><span class='label'><a id='x1-6010r8'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-6012x2'>
+     <!-- l. 131 --><p class='noindent'><span class='ec-qplb-x-x-109'>Acceso a los extremos con back y front. </span>Es posible también acceder al
+     primer y último elemento de un vector <code class='lstinline'><span style='color:#000000'>vec</span></code> usando los métodos <code class='lstinline'><span style='color:#000000'>front()</span></code> y
+     <code class='lstinline'><span style='color:#000000'>back()</span></code>. Este tipo de acceso <span class='ec-qplb-x-x-109'>también </span>permite lectura y escritura de los
+     elementos del arreglo: </p><!-- l. 132 -->
+     <pre class='lstlisting' id='listing-20'><span class='label'><a id='x1-6013r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>vec{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-6014r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>Imprime el ultimo elemento de vec</span> 
+</span><span class='label'><a id='x1-6015r3'></a></span><span style='color:#009900'>       <span class='ectt-1095'>que es 5 */</span> 
+</span><span class='label'><a id='x1-6016r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; vec.back() &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-6017r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>Modifica el ultimo elemento de vec */</span> 
+</span><span class='label'><a id='x1-6018r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>vec.back() = 7;</span> 
+</span><span class='label'><a id='x1-6019r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>vec ahora contiene {3, 1, 4, 1, 7} */</span> 
+</span><span class='label'><a id='x1-6020r8'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>Esto ahora imprime 7 */</span> 
+</span><span class='label'><a id='x1-6021r9'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; vec.back() &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-6022r10'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+<div class='center'>
+<!-- l. 146 --><p class='noindent'>
+                                                                     
+
+                                                                     
+</p><!-- l. 147 --><p class='noindent'><img alt='3[1[4[1[5[..v01234fbe]]]]]racocnkt(())' src='main1x.svg' /></p></div>
+   
+<!-- l. 187 --><p class='noindent'><span class='paragraphHead' id='insercion-y-remocion-de-elementos-en-el-back-del-vector-'><a id='x1-7000'></a><span class='ec-qplb-x-x-109'>Inserción y remoción de elementos en el </span><span class='ec-qplbi-x-x-109'>back </span><span class='ec-qplb-x-x-109'>del vector. </span></span>
+   Es posible agregar y eliminar elementos en el extremo derecho del vector (su
+<span class='ec-qplri-x-x-109'>back</span>). Esto se logra usando los métodos <code class='lstinline'><span style='color:#000000'>push_back()</span></code> y <code class='lstinline'><span style='color:#000000'>pop_back()</span></code> que agregan
+y eliminan elementos del <span class='ec-qplri-x-x-109'>back </span>del vector, respectivamente.
+</p><!-- l. 189 --><p class='indent'>   Se muestra un ejemplo de su uso a continuación.
+</p>
+   <!-- l. 191 -->
+<pre class='lstlisting' id='listing-23'><span class='label'><a id='x1-7001r1'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>vec{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-7002r2'></a></span><span style='color:#000000'>  <span class='ectt-1095'>vec.push_back(9);</span> 
+</span><span class='label'><a id='x1-7003r3'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>vec ahora contiene los elementos {3, 1, 4, 1, 5, 9} */</span> 
+</span><span class='label'><a id='x1-7004r4'></a></span><span style='color:#000000'>  <span class='ectt-1095'>vec.pop_back();</span> 
+</span><span class='label'><a id='x1-7005r5'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>vec ahora contiene los elementos {3, 1, 4, 1, 5} */</span></span></pre>
+<div class='center'>
+<!-- l. 198 --><p class='noindent'>
+</p><!-- l. 199 --><p class='noindent'><img alt='3011421354v301142135495veecc.push_back (9)' src='main2x.svg' /></p></div>
+<div class='center'>
+<!-- l. 251 --><p class='noindent'>
+</p><!-- l. 252 --><p class='noindent'><img alt='301142135495v3011421354veecc.pop_back ()' src='main3x.svg' /></p></div>
+   
+   <h5 class='subsubsectionHead' id='stddeque'><span class='titlemark'>1.1.2    </span> <a id='x1-80001.1.2'></a>std::deque</h5>
+<!-- l. 308 --><p class='noindent'><code class='lstinline'><span style='color:#000000'>std::deque</span></code> es un contenedor secuencial que extiende las capacidades
+del <code class='lstinline'><span style='color:#000000'>std::vector</span></code>. <span class='ec-qplb-x-x-109'>Todas </span>las operaciones del <code class='lstinline'><span style='color:#000000'>std::vector</span></code> mencionadas
+anteriormente son aplicables a un <code class='lstinline'><span style='color:#000000'>std::deque</span></code>, incluyendo la manera en que se
+declara e inicializa, la inserción y remoción del <span class='ec-qplri-x-x-109'>back</span>, así como el acceso a sus
+elementos.
+</p><!-- l. 310 --><p class='indent'>   El <code class='lstinline'><span style='color:#000000'>std::deque</span></code> agrega un nuevo par de métodos que insertan y remueven
+elementos del <span class='ec-qplri-x-x-109'>front </span>de la secuencia.
+   
+</p>
+<!-- l. 312 --><p class='noindent'><span class='paragraphHead' id='insercion-y-remocion-de-elementos-en-el-front-del-deque-'><a id='x1-9000'></a><span class='ec-qplb-x-x-109'>Inserción y remoción de elementos en el </span><span class='ec-qplbi-x-x-109'>front </span><span class='ec-qplb-x-x-109'>del deque. </span></span>
+   Es posible agregar y eliminar elementos en el extremo izquierdo del deque
+(su <span class='ec-qplri-x-x-109'>front</span>). Esto se logra usando los métodos <code class='lstinline'><span style='color:#000000'>push_front()</span></code> y <code class='lstinline'><span style='color:#000000'>pop_front()</span></code> que
+agregan y eliminan elementos del <span class='ec-qplri-x-x-109'>front </span>del deque, respectivamente.
+</p><!-- l. 314 --><p class='indent'>   Se muestra un ejemplo de su uso a continuación.
+</p>
+   <!-- l. 316 -->
+<pre class='lstlisting' id='listing-31'><span class='label'><a id='x1-9001r1'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::deque&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>d{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-9002r2'></a></span><span style='color:#000000'>  <span class='ectt-1095'>d.push_front(9);</span> 
+</span><span class='label'><a id='x1-9003r3'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>vec ahora contiene los elementos {9, 3, 1, 4, 1, 5} */</span> 
+</span><span class='label'><a id='x1-9004r4'></a></span><span style='color:#000000'>  <span class='ectt-1095'>d.pop_front();</span> 
+</span><span class='label'><a id='x1-9005r5'></a></span><span style='color:#000000'>  <span class='ectt-1095'>d.pop_front();</span> 
+</span><span class='label'><a id='x1-9006r6'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>vec ahora contiene los elementos {1, 4, 1, 5} */</span></span></pre>
+<div class='center'>
+<!-- l. 325 --><p class='noindent'>
+</p><!-- l. 326 --><p class='noindent'><img alt='3011421354d9031124314559d.push_front (9)' src='main4x.svg' /></p></div>
+<div class='center'>
+<!-- l. 377 --><p class='noindent'>
+</p><!-- l. 378 --><p class='noindent'><img alt='9031124314559d3011421354d.pop_front( )' src='main5x.svg' /></p></div>
+   
+   <h5 class='subsubsectionHead' id='stdstack'><span class='titlemark'>1.1.3    </span> <a id='x1-100001.1.3'></a>std::stack</h5>
+<!-- l. 433 --><p class='noindent'>El <code class='lstinline'><span style='color:#000000'>std::stack</span></code> es una forma restringida del <code class='lstinline'><span style='color:#000000'>std::deque</span></code> que solo permite acceso,
+inserciones, remociones del <span class='ec-qplri-x-x-109'>back</span>. Simula una estructura de <span class='ec-qplri-x-x-109'>pila </span>en la que solo se
+puede acceder y modificar el último elemento insertado en el contenedor. El
+<code class='lstinline'><span style='color:#000000'>std::stack</span></code> usa el nombre <span class='ec-qplri-x-x-109'>top </span>(la cima de la pila) en lugar de <span class='ec-qplri-x-x-109'>back </span>para referirse a
+su último elemento.
+   
+</p>
+<!-- l. 435 --><p class='noindent'><span class='paragraphHead' id='declaracion-e-inicializacion-de-stdstack-'><a id='x1-11000'></a><span class='ec-qplb-x-x-109'>Declaración e inicialización de </span><code class='lstinline'><span style='color:#000000'>std::stack</span></code><span class='ec-qplb-x-x-109'>. </span></span>
+   Solo existen dos maneras de declarar e inicializar un <code class='lstinline'><span style='color:#000000'>std::stack</span></code>:
+Inicializándolo como una pila vacía o inicializándolo como una copia de un
+<code class='lstinline'><span style='color:#000000'>std::deque</span></code>.
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-11002x1'>
+                                                                     
+
+                                                                     
+     <!-- l. 437 --><p class='noindent'><span class='ec-qplb-x-x-109'>Como pila vacía.</span>  </p><!-- l. 438 -->
+     <pre class='lstlisting' id='listing-38'><span class='label'><a id='x1-11003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::stack&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s;</span> 
+</span><span class='label'><a id='x1-11004r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>s es una pila vacia */</span> 
+</span><span class='label'><a id='x1-11005r3'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-11007x2'>
+     <!-- l. 442 --><p class='noindent'><span class='ec-qplb-x-x-109'>Como copia de un </span><code class='lstinline'><span style='color:#000000'>std::deque</span></code><span class='ec-qplb-x-x-109'>.</span>  </p><!-- l. 443 -->
+     <pre class='lstlisting' id='listing-40'><span class='label'><a id='x1-11008r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::deque&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>d{2, 7, 1, 8};</span> 
+</span><span class='label'><a id='x1-11009r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::stack&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s(d);</span> 
+</span><span class='label'><a id='x1-11010r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>s es una pila que contiene</span> 
+</span><span class='label'><a id='x1-11011r4'></a></span><span style='color:#009900'>       <span class='ectt-1095'>{2, 7, 1, 8}</span> 
+</span><span class='label'><a id='x1-11012r5'></a></span><span style='color:#009900'>       <span class='ectt-1095'>su top() es 8 */</span> 
+</span><span class='label'><a id='x1-11013r6'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+   
+<!-- l. 452 --><p class='noindent'><span class='paragraphHead' id='acceso-y-modificacion-de-la-cima'><a id='x1-12000'></a><span class='ec-qplb-x-x-109'>Acceso y modificación de la cima.</span></span>
+   Como se mencionó anteriormente, el <code class='lstinline'><span style='color:#000000'>std::stack</span></code> solo permite acceso y
+modificaciones en su último elemento. A su último elemento lo denomina su <span class='ec-qplri-x-x-109'>top</span>
+(la cima de la pila).
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-12002x1'>
+     <!-- l. 454 --><p class='noindent'><span class='ec-qplb-x-x-109'>Método top().  </span>Con este método se obtiene acceso a la cima y también es
+     posible modificarla. </p><!-- l. 455 -->
+     <pre class='lstlisting' id='listing-42'><span class='label'><a id='x1-12003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::deque&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>d{2, 7, 1, 8};</span> 
+</span><span class='label'><a id='x1-12004r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::stack&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s(d);</span> 
+</span><span class='label'><a id='x1-12005r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>s es una pila que contiene {2, 7, 1, 8} */</span> 
+</span><span class='label'><a id='x1-12006r4'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>Imprime la cima de la pila, que es 8 */</span> 
+</span><span class='label'><a id='x1-12007r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; s.top() &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-12008r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.top() = 12;</span> 
+</span><span class='label'><a id='x1-12009r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>Imprime la cima de la pila, que ahora es 12 */</span> 
+</span><span class='label'><a id='x1-12010r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; s.top() &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-12011r9'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-12013x2'>
+     <!-- l. 465 --><p class='noindent'><span class='ec-qplb-x-x-109'>Método push() y pop().  </span>Los métodos <code class='lstinline'><span style='color:#000000'>push()</span></code> y <code class='lstinline'><span style='color:#000000'>pop()</span></code> agregan y
+     remueven (respectivamente) elementos de la cima de la pila.
+</p>
+     <!-- l. 467 -->
+     <pre class='lstlisting' id='listing-45'><span class='label'><a id='x1-12014r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::stack&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s;</span> 
+</span><span class='label'><a id='x1-12015r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>s es una pila vacia. */</span> 
+</span><span class='label'><a id='x1-12016r3'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.push(1); s.push(2);</span> 
+</span><span class='label'><a id='x1-12017r4'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {1, 2} */</span> 
+</span><span class='label'><a id='x1-12018r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>la cima de la pila es 2 */</span> 
+</span><span class='label'><a id='x1-12019r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; s.top() &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-12020r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>se remueve el elemento en la cima</span> 
+</span><span class='label'><a id='x1-12021r8'></a></span><span style='color:#009900'>       <span class='ectt-1095'>de la pila (que era 2) */</span> 
+</span><span class='label'><a id='x1-12022r9'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.pop();</span> 
+</span><span class='label'><a id='x1-12023r10'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>la cima ahora es 1 */</span> 
+</span><span class='label'><a id='x1-12024r11'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; s.top() &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-12025r12'></a></span><span style='color:#000000'>  </span></pre>
+     
+                                                                     
+
+                                                                     
+     </li></ol>
+<div class='center'>
+<!-- l. 482 --><p class='noindent'>
+</p><!-- l. 483 --><p class='noindent'><img alt='31415.ts314159.tsoo.ppp((u))sh(9)' src='main6x.svg' /></p></div>
+<div class='center'>
+<!-- l. 534 --><p class='noindent'>
+</p><!-- l. 535 --><p class='noindent'><img alt='314159.ts31415.tsoo.ppp((o))p()' src='main7x.svg' /></p></div>
+   
+   <h5 class='subsubsectionHead' id='stdqueue'><span class='titlemark'>1.1.4    </span> <a id='x1-130001.1.4'></a>std::queue</h5>
+<!-- l. 591 --><p class='noindent'>El <code class='lstinline'><span style='color:#000000'>std::queue</span></code> es una versión restringida del <code class='lstinline'><span style='color:#000000'>std::deque</span></code> que solo permite
+inserciones en su último elemento (su <span class='ec-qplri-x-x-109'>back</span>) y remociones de su primer elemento
+(su <span class='ec-qplri-x-x-109'>front</span>). Estas operaciones simulan una <span class='ec-qplri-x-x-109'>cola</span>: Los primeros elementos que
+entran a la estructura (al ser insertados en el <span class='ec-qplri-x-x-109'>back </span>de la cola) son los primeros que
+salen (al ser removidos por el <span class='ec-qplri-x-x-109'>front</span>).
+</p><!-- l. 593 --><p class='indent'>
+     </p><ol class='enumerate1'>
+                                                                     
+
+                                                                     
+<li class='enumerate' id='x1-13002x1'>
+     <!-- l. 594 --><p class='noindent'><span class='ec-qplb-x-x-109'>Declaración e inicialización.  </span>Los <code class='lstinline'><span style='color:#000000'>std::queue</span></code> se declaran e inicializan de
+     las siguientes formas:
+          </p><ol class='enumerate2'>
+<li class='enumerate' id='x1-13004x1'>
+          <!-- l. 596 --><p class='noindent'><span class='ec-qplb-x-x-109'>Como una cola vacía.  </span>Si no se le proveen argumentos de
+          construcción. </p><!-- l. 597 -->
+          <pre class='lstlisting' id='listing-49'><span class='label'><a id='x1-13005r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::queue&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>q;</span> 
+</span><span class='label'><a id='x1-13006r2'></a></span><span style='color:#000000'>    </span></pre>
+          
+          </li>
+<li class='enumerate' id='x1-13008x2'>
+          <!-- l. 600 --><p class='noindent'><span class='ec-qplb-x-x-109'>Con una lista definida de elementos presentes en un </span><code class='lstinline'><span style='color:#000000'>std::deque</span></code><span class='ec-qplb-x-x-109'>.</span>
+          </p><!-- l. 601 -->
+          <pre class='lstlisting' id='listing-51'><span class='label'><a id='x1-13009r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::deque&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>d{1, 2, 3};</span> 
+</span><span class='label'><a id='x1-13010r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::queue&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>q(d);</span> 
+</span><span class='label'><a id='x1-13011r3'></a></span><span style='color:#000000'>    </span></pre>
+          
+          </li></ol>
+     </li>
+<li class='enumerate' id='x1-13013x2'>
+     <!-- l. 606 --><p class='noindent'><span class='ec-qplb-x-x-109'>Método push().  </span>El método <code class='lstinline'><span style='color:#000000'>push()</span></code> inserta un nuevo elemento al final de la
+     cola. </p><!-- l. 607 -->
+     <pre class='lstlisting' id='listing-53'><span class='label'><a id='x1-13014r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::queue&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>q;</span> 
+</span><span class='label'><a id='x1-13015r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.push(1);</span> 
+</span><span class='label'><a id='x1-13016r3'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.push(2);</span> 
+</span><span class='label'><a id='x1-13017r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.push(3);</span> 
+</span><span class='label'><a id='x1-13018r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>La cola q contiene los elementos</span> 
+</span><span class='label'><a id='x1-13019r6'></a></span><span style='color:#009900'>       <span class='ectt-1095'>{1, 2, 3} */</span> 
+</span><span class='label'><a id='x1-13020r7'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-13022x3'>
+     <!-- l. 615 --><p class='noindent'><span class='ec-qplb-x-x-109'>Método pop().  </span>El método <code class='lstinline'><span style='color:#000000'>pop()</span></code> remueve al elemento de enfrente de la
+     cola. </p><!-- l. 616 -->
+     <pre class='lstlisting' id='listing-55'><span class='label'><a id='x1-13023r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::queue&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>q;</span> 
+</span><span class='label'><a id='x1-13024r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.push(1); q.push(2); q.push(3);</span> 
+</span><span class='label'><a id='x1-13025r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>La cola q contiene los elementos</span> 
+</span><span class='label'><a id='x1-13026r4'></a></span><span style='color:#009900'>       <span class='ectt-1095'>{1, 2, 3} */</span> 
+</span><span class='label'><a id='x1-13027r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.pop();</span> 
+</span><span class='label'><a id='x1-13028r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>La cola q contiene los elementos</span> 
+</span><span class='label'><a id='x1-13029r7'></a></span><span style='color:#009900'>       <span class='ectt-1095'>{2, 3} */</span> 
+</span><span class='label'><a id='x1-13030r8'></a></span><span style='color:#000000'>  </span></pre>
+     
+                                                                     
+
+                                                                     
+     </li>
+<li class='enumerate' id='x1-13032x4'>
+     <!-- l. 625 --><p class='noindent'><span class='ec-qplb-x-x-109'>Acceso y modificación del primer y último elemento.  </span>Al igual que el
+     <code class='lstinline'><span style='color:#000000'>std::vector</span></code> y el <code class='lstinline'><span style='color:#000000'>std::deque</span></code> el <code class='lstinline'><span style='color:#000000'>std::queue</span></code> provee acceso a su primer y
+     último elemento a través de los métodos <code class='lstinline'><span style='color:#000000'>front()</span></code> y <code class='lstinline'><span style='color:#000000'>back()</span></code>. Este acceso es
+     tanto de lectura como escritura. </p><!-- l. 626 -->
+     <pre class='lstlisting' id='listing-61'><span class='label'><a id='x1-13033r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::queue&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>q;</span> 
+</span><span class='label'><a id='x1-13034r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.push(1); q.push(2); q.push(3);</span> 
+</span><span class='label'><a id='x1-13035r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>La cola q contiene los elementos</span> 
+</span><span class='label'><a id='x1-13036r4'></a></span><span style='color:#009900'>        <span class='ectt-1095'>{1, 2, 3} */</span> 
+</span><span class='label'><a id='x1-13037r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.front();</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>1</span> 
+</span><span class='label'><a id='x1-13038r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.back();</span>  </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>3</span> 
+</span><span class='label'><a id='x1-13039r7'></a></span> 
+<span class='label'><a id='x1-13040r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>q.front() = 5;</span> 
+</span><span class='label'><a id='x1-13041r9'></a></span> 
+<span class='label'><a id='x1-13042r10'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>La cola q ahora contiene los elementos</span> 
+</span><span class='label'><a id='x1-13043r11'></a></span><span style='color:#009900'>        <span class='ectt-1095'>{5, 2, 3} */</span> 
+</span><span class='label'><a id='x1-13044r12'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+<div class='center'>
+<!-- l. 640 --><p class='noindent'>
+</p><!-- l. 641 --><p class='noindent'><img alt='31415.f.bq314159.f.bqrara.ococpnknkut(t(s()()h))(9)' src='main8x.svg' /></p></div>
+<div class='center'>
+<!-- l. 695 --><p class='noindent'>
+</p><!-- l. 696 --><p class='noindent'><img alt='314159.f.bq14159.f.bqrara.ococpnknkot(t(p()()()))' src='main9x.svg' /></p></div>
+   
+                                                                     
+
+                                                                     
+   <h4 class='subsectionHead' id='contenedores-asociativos'><span class='titlemark'>1.2    </span> <a id='x1-140001.2'></a>Contenedores Asociativos</h4>
+<!-- l. 754 --><p class='noindent'>Aunque los contenedores secuenciales son extremadamente útiles para una gran
+variedad de situaciones, son incapaces de responder preguntas simples como
+¿Mi contenedor contiene al elemento <span class='ec-qplri-x-x-109'>X</span>?. Responder a estas preguntas requeriría
+en el peor de los casos recorrer todo el contenedor para encontrar el elemento
+<span class='ec-qplri-x-x-109'>X</span>.
+</p><!-- l. 756 --><p class='indent'>   Para responder esta clase de preguntas y más, existen los contenedores
+<span class='ec-qplri-x-x-109'>asociativos</span>. Son llamados de esta manera porque <span class='ec-qplri-x-x-109'>asocian </span>a sus elementos con
+datos sobre ellos.
+   
+</p>
+   <h5 class='subsubsectionHead' id='stdset'><span class='titlemark'>1.2.1    </span> <a id='x1-150001.2.1'></a>std::set</h5>
+<!-- l. 761 --><p class='noindent'>El contenedor <code class='lstinline'><span style='color:#000000'>std::set</span></code> modela un conjunto (en el sentido matemático).
+Mantiene una colección de elementos de los que fácilmente puede responder la
+pregunta de si un elemento dado está presente o no dentro del conjunto. El
+conjunto no permite elementos repetidos, es decir, cada elemento solo puede
+estar o no estar dentro del conjunto. No es posible que un elemento dado esté
+más de una vez dentro del conjunto.
+</p><!-- l. 763 --><p class='indent'>   A diferencia de los contenedores secuenciales, el conjunto que mantiene un
+<code class='lstinline'><span style='color:#000000'>std::set</span></code> no tiene un orden relacionado en absoluto con el orden de inserción.
+En su lugar, el <code class='lstinline'><span style='color:#000000'>std::set</span></code> mantiene sus elementos en orden de menor a
+mayor.
+</p><!-- l. 765 --><p class='indent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-15002x1'>
+     <!-- l. 766 --><p class='noindent'><span class='ec-qplb-x-x-109'>Declaración e inicialización.  </span>Las principales maneras de declarar e
+     inicializar un <code class='lstinline'><span style='color:#000000'>std::set</span></code> son las siguientes:
+          </p><ol class='enumerate2'>
+<li class='enumerate' id='x1-15004x1'>
+          <!-- l. 768 --><p class='noindent'><span class='ec-qplb-x-x-109'>Como un conjunto vacío.</span>  </p><!-- l. 769 -->
+          <pre class='lstlisting' id='listing-66'><span class='label'><a id='x1-15005r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s;</span> 
+</span><span class='label'><a id='x1-15006r2'></a></span><span style='color:#000000'>    </span></pre>
+          
+                                                                     
+
+                                                                     
+          </li>
+<li class='enumerate' id='x1-15008x2'>
+          <!-- l. 772 --><p class='noindent'><span class='ec-qplb-x-x-109'>Dada una lista explícita de elementos.</span>  </p><!-- l. 773 -->
+          <pre class='lstlisting' id='listing-67'><span class='label'><a id='x1-15009r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{1, 2, 3, 4};</span> 
+</span><span class='label'><a id='x1-15010r2'></a></span><span style='color:#000000'>    </span></pre>
+          
+          </li>
+<li class='enumerate' id='x1-15012x3'>
+          <!-- l. 776 --><p class='noindent'><span class='ec-qplb-x-x-109'>Con la copia de los elementos de otro conjunto.</span>  </p><!-- l. 777 -->
+          <pre class='lstlisting' id='listing-68'><span class='label'><a id='x1-15013r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>x{1, 4, 9};</span> 
+</span><span class='label'><a id='x1-15014r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s(x);</span> 
+</span><span class='label'><a id='x1-15015r3'></a></span><span style='color:#000000'>    </span></pre>
+          
+          </li></ol>
+     </li>
+<li class='enumerate' id='x1-15017x2'>
+     <!-- l. 782 --><p class='noindent'><span class='ec-qplb-x-x-109'>Inserción de elementos al conjunto.  </span>Para insertar elementos al conjunto
+     dado, se usa el método <code class='lstinline'><span style='color:#000000'>insert()</span></code>. </p><!-- l. 784 -->
+     <pre class='lstlisting' id='listing-70'><span class='label'><a id='x1-15018r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s;</span> 
+</span><span class='label'><a id='x1-15019r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'> <span class='ectt-1095'>i = 0; i &lt; 4; ++i) {</span> 
+</span><span class='label'><a id='x1-15020r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>s.insert(i * i);</span> 
+</span><span class='label'><a id='x1-15021r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-15022r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene los elementos {0, 1, 4, 9}</span> 
+</span><span class='label'><a id='x1-15023r6'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <!-- l. 791 --><p class='noindent'>La inserción se realiza preservando el orden de menor a mayor.
+     </p><!-- l. 792 -->
+     <pre class='lstlisting' id='listing-71'><span class='label'><a id='x1-15024r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{2, 3, 5, 7};</span> 
+</span><span class='label'><a id='x1-15025r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.insert(4);</span> 
+</span><span class='label'><a id='x1-15026r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {2, 3, 4, 5, 7}</span> 
+</span><span class='label'><a id='x1-15027r4'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <div class='center'>
+<!-- l. 797 --><p class='noindent'>
+</p><!-- l. 798 --><p class='noindent'><img alt='2357s234574ss.insert(4)' src='main10x.svg' /></p></div>
+     </li>
+<li class='enumerate' id='x1-15029x3'>
+     <!-- l. 852 --><p class='noindent'><span class='ec-qplb-x-x-109'>Eliminación de elementos del conjunto.  </span>De manera similar, para
+     eliminar un elemento de un conjunto dado se usa el método <code class='lstinline'><span style='color:#000000'>erase()</span></code>.
+     </p><!-- l. 854 -->
+     <pre class='lstlisting' id='listing-73'><span class='label'><a id='x1-15030r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s;</span> 
+</span><span class='label'><a id='x1-15031r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'> <span class='ectt-1095'>i = 0; i &lt; 4; ++i) {</span> 
+</span><span class='label'><a id='x1-15032r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>s.insert(i * i);</span> 
+</span><span class='label'><a id='x1-15033r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-15034r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.erase(1);</span> 
+</span><span class='label'><a id='x1-15035r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>el conjunto ahora contiene</span> 
+</span><span class='label'><a id='x1-15036r7'></a></span><span style='color:#009900'>    <span class='ectt-1095'>{0, 4, 9} */</span> 
+</span><span class='label'><a id='x1-15037r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.erase(5);</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>no hace nada ya que s no contiene a 5.</span> 
+</span><span class='label'><a id='x1-15038r9'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>el conjunto sigue conteniendo a</span> 
+</span><span class='label'><a id='x1-15039r10'></a></span><span style='color:#009900'>    <span class='ectt-1095'>{0, 4, 9} */</span> 
+</span><span class='label'><a id='x1-15040r11'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <!-- l. 866 --><p class='noindent'>La eliminación también se realiza preservando el orden de menor a mayor.
+     </p><!-- l. 867 -->
+     <pre class='lstlisting' id='listing-74'><span class='label'><a id='x1-15041r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{2, 3, 4, 5, 7};</span> 
+</span><span class='label'><a id='x1-15042r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.erase(4);</span> 
+</span><span class='label'><a id='x1-15043r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {2, 3, 5, 7}</span> 
+</span><span class='label'><a id='x1-15044r4'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <div class='center'>
+<!-- l. 872 --><p class='noindent'>
+</p><!-- l. 873 --><p class='noindent'><img alt='234574s2357ss.erase(4)' src='main11x.svg' /></p></div>
+     </li>
+<li class='enumerate' id='x1-15046x4'>
+     <!-- l. 927 --><p class='noindent'><span class='ec-qplb-x-x-109'>Evaluación de pertenencia de un elemento dado al conjunto.  </span>Se puede
+     evaluar si un elemento dado pertenece al conjunto o no con el método
+     <code class='lstinline'><span style='color:#000000'>contains()</span></code>. </p><!-- l. 928 -->
+                                                                     
+
+                                                                     
+     <pre class='lstlisting' id='listing-76'><span class='label'><a id='x1-15047r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s;</span> 
+</span><span class='label'><a id='x1-15048r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'> <span class='ectt-1095'>i = 0; i &lt; 4; ++i) {</span> 
+</span><span class='label'><a id='x1-15049r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>s.insert(i * i);</span> 
+</span><span class='label'><a id='x1-15050r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-15051r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.contains(-1);</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>false</span> 
+</span><span class='label'><a id='x1-15052r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.contains(9);</span>  </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>true</span> 
+</span><span class='label'><a id='x1-15053r7'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.contains(15);</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>false</span> 
+</span><span class='label'><a id='x1-15054r8'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-15056x5'>
+     <!-- l. 937 --><p class='noindent'><span class='ec-qplb-x-x-109'>Obtener el número de elementos de un set.  </span>Se usa el método <code class='lstinline'><span style='color:#000000'>size()</span></code>.
+     </p><!-- l. 938 -->
+     <pre class='lstlisting' id='listing-78'><span class='label'><a id='x1-15057r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s;</span> 
+</span><span class='label'><a id='x1-15058r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'> <span class='ectt-1095'>i = 0; i &lt; 4; ++i) {</span> 
+</span><span class='label'><a id='x1-15059r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>s.insert(i * i);</span> 
+</span><span class='label'><a id='x1-15060r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-15061r5'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'> <span class='ectt-1095'>i = 1; i &lt; 5; ++i) {</span> 
+</span><span class='label'><a id='x1-15062r6'></a></span><span style='color:#000000'>      <span class='ectt-1095'>s.insert(i * i);</span> 
+</span><span class='label'><a id='x1-15063r7'></a></span><span style='color:#000000'>    <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-15064r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>s.size();</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>5</span> 
+</span><span class='label'><a id='x1-15065r9'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+   
+   <h5 class='subsubsectionHead' id='stdmap'><span class='titlemark'>1.2.2    </span> <a id='x1-160001.2.2'></a>std::map</h5>
+<!-- l. 953 --><p class='noindent'>El <code class='lstinline'><span style='color:#000000'>std::map</span></code> es un contenedor que mantiene un conjunto de <span class='ec-qplri-x-x-109'>asociaciones </span>entre
+<span class='ec-qplri-x-x-109'>llaves </span>únicas y <span class='ec-qplri-x-x-109'>valores</span>. Son capaces de agregar y eliminar asociaciones así
+como responder preguntas del tipo ¿A qué valor está asociada la llave
+<span class='ec-qplri-x-x-109'>X</span>?.
+</p><!-- l. 955 --><p class='indent'>   En lo que sigue, usaremos como ejemplo un map que mantiene la asociación
+entre nombres de números en Inglés (como <span class='ec-qplri-x-x-109'>one</span>, <span class='ec-qplri-x-x-109'>two</span>, <span class='ec-qplri-x-x-109'>twelve</span>) con su valor
+numérico representado como un int (1, 2, 12 respectivamente para los valores
+mostrados anteriormente).
+</p><!-- l. 957 --><p class='indent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-16002x1'>
+     <!-- l. 958 --><p class='noindent'><span class='ec-qplb-x-x-109'>Declaración e inicialización .</span>
+          </p><ol class='enumerate2'>
+<li class='enumerate' id='x1-16004x1'>
+          <!-- l. 960 --><p class='noindent'><span class='ec-qplb-x-x-109'>Como un map vacío.  </span>Se puede declarar un map vacío: un
+          map sin ninguna asociación dada. Al declararse se escribe
+          primero el tipo de dato de las llaves y luego el de los valores.
+          </p><!-- l. 961 -->
+                                                                     
+
+                                                                     
+          <pre class='lstlisting' id='listing-80'><span class='label'><a id='x1-16005r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>m;</span> 
+</span><span class='label'><a id='x1-16006r2'></a></span><span style='color:#000000'>      </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m es un map vacio que asocia cadenas a enteros.</span> 
+</span><span class='label'><a id='x1-16007r3'></a></span><span style='color:#000000'>    </span></pre>
+          
+          </li>
+<li class='enumerate' id='x1-16009x2'>
+          <!-- l. 965 --><p class='noindent'><span class='ec-qplb-x-x-109'>Con una lista predefinida de asociaciones.  </span>Se puede declarar y
+          establecer un conjunto inicial de asociaciones de la siguiente manera.
+          </p><!-- l. 966 -->
+          <pre class='lstlisting' id='listing-81'><span class='label'><a id='x1-16010r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>m{</span> 
+</span><span class='label'><a id='x1-16011r2'></a></span><span style='color:#000000'>        <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>one</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>1},</span> 
+</span><span class='label'><a id='x1-16012r3'></a></span><span style='color:#000000'>        <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>two</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>2},</span> 
+</span><span class='label'><a id='x1-16013r4'></a></span><span style='color:#000000'>        <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>12},</span> 
+</span><span class='label'><a id='x1-16014r5'></a></span><span style='color:#000000'>      <span class='ectt-1095'>};</span> 
+</span><span class='label'><a id='x1-16015r6'></a></span><span style='color:#000000'>      </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16016r7'></a></span><span style='color:#000000'>      </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16017r8'></a></span><span style='color:#000000'>      </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16018r9'></a></span><span style='color:#000000'>      </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 12</span> 
+</span><span class='label'><a id='x1-16019r10'></a></span><span style='color:#000000'>    </span></pre>
+          
+          </li></ol>
+     </li>
+<li class='enumerate' id='x1-16021x2'>
+     <!-- l. 978 --><p class='noindent'><span class='ec-qplb-x-x-109'>Obtención del valor asociado a una llave dada.  </span>Se puede obtener el valor
+     asociado a una llave usando el operador <code class='lstinline'><span style='color:#000000'>[]</span></code>. </p><!-- l. 979 -->
+     <pre class='lstlisting' id='listing-83'><span class='label'><a id='x1-16022r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>m{</span> 
+</span><span class='label'><a id='x1-16023r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>one</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>1},</span> 
+</span><span class='label'><a id='x1-16024r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>two</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>2},</span> 
+</span><span class='label'><a id='x1-16025r4'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>12},</span> 
+</span><span class='label'><a id='x1-16026r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>};</span> 
+</span><span class='label'><a id='x1-16027r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16028r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16029r8'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16030r9'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 12</span> 
+</span><span class='label'><a id='x1-16031r10'></a></span> 
+<span class='label'><a id='x1-16032r11'></a></span><span style='color:#000000'>    <span class='ectt-1095'>m[</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>];</span></span><span style='color:#000000'> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>vale 12</span> 
+</span><span class='label'><a id='x1-16033r12'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <!-- l. 992 --><p class='noindent'>En el caso de que no exista la asociación solicitada, se inserta una nueva con
+     un valor por defecto inicializado en 0 (el valor por defecto depende del tipo
+     de dato del valor). </p><!-- l. 993 -->
+     <pre class='lstlisting' id='listing-84'><span class='label'><a id='x1-16034r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>m{</span> 
+</span><span class='label'><a id='x1-16035r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>one</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>1},</span> 
+</span><span class='label'><a id='x1-16036r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>two</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>2},</span> 
+</span><span class='label'><a id='x1-16037r4'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>12},</span> 
+</span><span class='label'><a id='x1-16038r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>};</span> 
+</span><span class='label'><a id='x1-16039r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16040r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16041r8'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16042r9'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 12</span> 
+</span><span class='label'><a id='x1-16043r10'></a></span> 
+<span class='label'><a id='x1-16044r11'></a></span><span style='color:#000000'>    <span class='ectt-1095'>m[</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>];</span></span><span style='color:#000000'> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>vale 12</span> 
+</span><span class='label'><a id='x1-16045r12'></a></span><span style='color:#000000'>    <span class='ectt-1095'>m[</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>que</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>];</span></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>vale 0</span> 
+</span><span class='label'><a id='x1-16046r13'></a></span> 
+<span class='label'><a id='x1-16047r14'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16048r15'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16049r16'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16050r17'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 12</span> 
+</span><span class='label'><a id='x1-16051r18'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>que    -&gt; 0</span> 
+</span><span class='label'><a id='x1-16052r19'></a></span> 
+<span class='label'><a id='x1-16053r20'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-16055x3'>
+     <!-- l. 1014 --><p class='noindent'><span class='ec-qplb-x-x-109'>Determinar si el map contiene un valor asociado a una llave dada.  </span>Se
+     puede obtener valor booleano que nos dice si el map contiene actualmente
+     una asociación entre una llave dada o no. Esto se hace con el método
+     <code class='lstinline'><span style='color:#000000'>contains()</span></code>. </p><!-- l. 1015 -->
+     <pre class='lstlisting' id='listing-86'><span class='label'><a id='x1-16056r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>m{</span> 
+</span><span class='label'><a id='x1-16057r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>one</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>1},</span> 
+</span><span class='label'><a id='x1-16058r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>two</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>2},</span> 
+</span><span class='label'><a id='x1-16059r4'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>12},</span> 
+</span><span class='label'><a id='x1-16060r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>};</span> 
+</span><span class='label'><a id='x1-16061r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16062r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16063r8'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16064r9'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 12</span> 
+</span><span class='label'><a id='x1-16065r10'></a></span> 
+<span class='label'><a id='x1-16066r11'></a></span><span style='color:#000000'>    <span class='ectt-1095'>m.contains(</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>)</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span><span style='color:#000000'> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>true</span> 
+</span><span class='label'><a id='x1-16067r12'></a></span><span style='color:#000000'>    <span class='ectt-1095'>m.contains(</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>que</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>)</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>false</span> 
+</span><span class='label'><a id='x1-16068r13'></a></span><span style='color:#000000'>  </span></pre>
+     
+                                                                     
+
+                                                                     
+     </li>
+<li class='enumerate' id='x1-16070x4'>
+     <!-- l. 1029 --><p class='noindent'><span class='ec-qplb-x-x-109'>Establecer una asocación.  </span>Se puede establecer una nueva asociación o
+     sobreescribir una anterior con el operador <code class='lstinline'><span style='color:#000000'>[]</span></code>. </p><!-- l. 1030 -->
+     <pre class='lstlisting' id='listing-88'><span class='label'><a id='x1-16071r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>m{</span> 
+</span><span class='label'><a id='x1-16072r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>one</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>1},</span> 
+</span><span class='label'><a id='x1-16073r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>two</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>2},</span> 
+</span><span class='label'><a id='x1-16074r4'></a></span><span style='color:#000000'>      <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>13},</span> 
+</span><span class='label'><a id='x1-16075r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>};</span> 
+</span><span class='label'><a id='x1-16076r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16077r7'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16078r8'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16079r9'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 13</span> 
+</span><span class='label'><a id='x1-16080r10'></a></span> 
+<span class='label'><a id='x1-16081r11'></a></span><span style='color:#000000'>    <span class='ectt-1095'>m[</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>three</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>]</span></span><span style='color:#000000'> <span class='ectt-1095'>= 3;</span> 
+</span><span class='label'><a id='x1-16082r12'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16083r13'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16084r14'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16085r15'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>three  -&gt; 3</span> 
+</span><span class='label'><a id='x1-16086r16'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 13</span> 
+</span><span class='label'><a id='x1-16087r17'></a></span> 
+<span class='label'><a id='x1-16088r18'></a></span><span style='color:#000000'>    <span class='ectt-1095'>m[</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>twelve</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>]</span></span><span style='color:#000000'> <span class='ectt-1095'>= 12;</span> 
+</span><span class='label'><a id='x1-16089r19'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>m contiene las asocaciones:</span> 
+</span><span class='label'><a id='x1-16090r20'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>one    -&gt; 1</span> 
+</span><span class='label'><a id='x1-16091r21'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>two    -&gt; 2</span> 
+</span><span class='label'><a id='x1-16092r22'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>three  -&gt; 3</span> 
+</span><span class='label'><a id='x1-16093r23'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>twelve -&gt; 12</span> 
+</span><span class='label'><a id='x1-16094r24'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+   
+   <h4 class='subsectionHead' id='iteracion-sobre-contenedores'><span class='titlemark'>1.3    </span> <a id='x1-170001.3'></a>Iteración sobre contenedores</h4>
+<!-- l. 1060 --><p class='noindent'>Es posible iterar sobre los contenedores <code class='lstinline'><span style='color:#000000'>std::vector</span></code>, <code class='lstinline'><span style='color:#000000'>std::deque</span></code>, <code class='lstinline'><span style='color:#000000'>std::set</span></code> y
+<code class='lstinline'><span style='color:#000000'>std::map</span></code> de la misma manera con el denominado <span class='ec-qplri-x-x-109'>for basado en rangos</span>, como se
+muestra a continuación:
+</p>
+   <!-- l. 1062 -->
+<pre class='lstlisting' id='listing-93'><span class='label'><a id='x1-17001r1'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{1, 1, 2, 3, 5};</span> 
+</span><span class='label'><a id='x1-17002r2'></a></span> 
+<span class='label'><a id='x1-17003r3'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>for basado en rangos sobre ‘‘v’’ */</span> 
+</span><span class='label'><a id='x1-17004r4'></a></span><span style='color:#000000'>  </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>vi: v) {</span> 
+</span><span class='label'><a id='x1-17005r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; vi &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'> <span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-17006r6'></a></span><span style='color:#000000'>  <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-17007r7'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::cout &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-17008r8'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>imprime 1 1 2 3 5 \n</span> 
+</span><span class='label'><a id='x1-17009r9'></a></span> 
+<span class='label'><a id='x1-17010r10'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{1, 1, 2, 3, 5};</span> 
+</span><span class='label'><a id='x1-17011r11'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>lo mismo sobre s */</span> 
+</span><span class='label'><a id='x1-17012r12'></a></span><span style='color:#000000'>  </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>si: s) {</span> 
+</span><span class='label'><a id='x1-17013r13'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; si &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'> <span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-17014r14'></a></span><span style='color:#000000'>  <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-17015r15'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::cout &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#9400D1'><span class='ectt-1095'>\</span></span><span style='color:#9400D1'><span class='ectt-1095'>n</span></span><span style='color:#9400D1'><span class='ectt-1095'>’</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-17016r16'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>imprime 1 2 3 5 \n</span></span></pre>
+<!-- l. 1081 --><p class='indent'>   Este recorrido se hace sobre todos los elementos del contenedor dado <span class='ec-qplb-x-x-109'>por
+copia</span>. Esto quiere decir que cualquier modificación que se realice sobre los
+elementos del contenedor durante la ejecución del <span class='ec-qplri-x-x-109'>for </span>no se mantendrán saliendo
+de éste:
+</p>
+   <!-- l. 1083 -->
+<pre class='lstlisting' id='listing-94'><span class='label'><a id='x1-17017r1'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{1, 1, 2, 3, 5};</span> 
+</span><span class='label'><a id='x1-17018r2'></a></span> 
+<span class='label'><a id='x1-17019r3'></a></span><span style='color:#000000'>  </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>vi: v) {</span> 
+</span><span class='label'><a id='x1-17020r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>vi *= 2;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>multiplica vi por 2</span> 
+</span><span class='label'><a id='x1-17021r5'></a></span><span style='color:#000000'>  <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-17022r6'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>v sigue siendo {1, 1, 2, 3, 5}</span></span></pre>
+<!-- l. 1092 --><p class='indent'>   Para poder modificar los elementos del arreglo se necesita declarar a la
+variable de iteración como una <span class='ec-qplb-x-x-109'>referencia</span>. Esto se escribe de la siguiente manera
+en <span class='ec-qplb-x-x-109'>C++</span>:
+</p>
+   <!-- l. 1094 -->
+<pre class='lstlisting' id='listing-95'><span class='label'><a id='x1-17023r1'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{1, 1, 2, 3, 5};</span> 
+</span><span class='label'><a id='x1-17024r2'></a></span> 
+<span class='label'><a id='x1-17025r3'></a></span><span style='color:#000000'>  </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'><span class='ectt-1095'>&amp;</span></span><span style='color:#000000'> <span class='ectt-1095'>vi: v) {</span> 
+</span><span class='label'><a id='x1-17026r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>vi *= 2;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>multiplica vi por 2</span> 
+</span><span class='label'><a id='x1-17027r5'></a></span><span style='color:#000000'>  <span class='ectt-1095'>}</span> 
+</span><span class='label'><a id='x1-17028r6'></a></span><span style='color:#000000'>  </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>v ahora es {2, 2, 4, 6, 10}</span></span></pre>
+                                                                     
+
+                                                                     
+<!-- l. 1103 --><p class='indent'>   Iterar sobre un <code class='lstinline'><span style='color:#000000'>std::map</span></code> es un tanto diferente ya que no contiene elementos
+simples sino <span class='ec-qplri-x-x-109'>pares </span>de llave/valor que representan las asociaciones que modela.
+Para iterar sobre los pares de llave/valor presentes en un map se usan los
+denominados <span class='ec-qplri-x-x-109'>structured bindings</span>:
+</p>
+   <!-- l. 1105 -->
+<pre class='lstlisting' id='listing-97'><span class='label'><a id='x1-17029r1'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>figuresides{</span> 
+</span><span class='label'><a id='x1-17030r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>triangle</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>3},</span> 
+</span><span class='label'><a id='x1-17031r3'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>square</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>4},</span> 
+</span><span class='label'><a id='x1-17032r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>pentagon</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>5},</span> 
+</span><span class='label'><a id='x1-17033r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>hexagon</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>6}</span> 
+</span><span class='label'><a id='x1-17034r6'></a></span><span style='color:#000000'>  <span class='ectt-1095'>};</span> 
+</span><span class='label'><a id='x1-17035r7'></a></span><span style='color:#000000'>  </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>[figure, sides]: figuresides) {</span> 
+</span><span class='label'><a id='x1-17036r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::cout &lt;&lt; figure &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'> <span class='ectt-1095'>has "</span></span><span style='color:#000000'> <span class='ectt-1095'>&lt;&lt; sides &lt;&lt;</span> </span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'> <span class='ectt-1095'>sides\n"</span></span><span style='color:#000000'><span class='ectt-1095'>;</span></span> 
+<span class='label'><a id='x1-17037r9'></a></span><span style='color:#000000'>  <span class='ectt-1095'>}</span></span></pre>
+<!-- l. 1117 --><p class='indent'>   Es posible modificar los <span class='ec-qplb-x-x-109'>valores </span>de un map dentro de un <span class='ec-qplri-x-x-109'>for </span>de este tipo
+nuevamente declarando a las variables de iteración como referencias, sin
+embargo, esto <span class='ec-qplb-x-x-109'>no </span>permite modificar las <span class='ec-qplb-x-x-109'>llaves</span>.
+</p>
+   <!-- l. 1119 -->
+<pre class='lstlisting' id='listing-98'><span class='label'><a id='x1-17038r1'></a></span><span style='color:#000000'>  <span class='ectt-1095'>std::map&lt;std::string,</span> </span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>figuresides{</span> 
+</span><span class='label'><a id='x1-17039r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>triangle</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>3},</span> 
+</span><span class='label'><a id='x1-17040r3'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>square</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>4},</span> 
+</span><span class='label'><a id='x1-17041r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>pentagon</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>5},</span> 
+</span><span class='label'><a id='x1-17042r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>{</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#9400D1'><span class='ectt-1095'>hexagon</span></span><span style='color:#9400D1'><span class='ectt-1095'>"</span></span><span style='color:#000000'><span class='ectt-1095'>,</span></span><span style='color:#000000'> <span class='ectt-1095'>6}</span> 
+</span><span class='label'><a id='x1-17043r6'></a></span><span style='color:#000000'>  <span class='ectt-1095'>};</span> 
+</span><span class='label'><a id='x1-17044r7'></a></span><span style='color:#000000'>  </span><span style='color:#FF00FF'><span class='ectt-1095'>for</span></span><span style='color:#000000'> <span class='ectt-1095'>(</span></span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>&amp;[figure, sides]: figuresides) {</span> 
+</span><span class='label'><a id='x1-17045r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>sides *= 2;</span>       </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>legal</span> 
+</span><span class='label'><a id='x1-17046r9'></a></span><span style='color:#000000'>    <span class='ectt-1095'>figure += figure;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ilegal</span> 
+</span><span class='label'><a id='x1-17047r10'></a></span><span style='color:#000000'>  <span class='ectt-1095'>}</span></span></pre>
+   
+   <h3 class='sectionHead' id='iteradores'><span class='titlemark'>2    </span> <a id='x1-180002'></a>Iteradores</h3>
+<!-- l. 1135 --><p class='noindent'>La biblioteca estándar de C++ generaliza el concepto de <span class='ec-qplri-x-x-109'>apuntador </span>proveyente de
+C. Se definen nuevos objetos denominados <span class='ec-qplri-x-x-109'>iteradores </span>que funcionan en varios
+aspectos como apuntadores <span class='ec-qplri-x-x-109'>mejorados</span>.
+</p><!-- l. 1137 --><p class='indent'>   Los iteradores modelan referencias a elementos individuales de un
+contenedor. Con ellos, es posible modificar el elemento referenciado o encontrar
+elementos <span class='ec-qplri-x-x-109'>cercanos </span>(cada contenedor define esta cercanía de distinta forma) a
+éste.
+</p><!-- l. 1139 --><p class='indent'>   Las funciones de búsqueda de contenedores y también múltiples
+funciones de modificación operan sobre iteradores o los retornan como
+valores.
+</p><!-- l. 1141 --><p class='indent'>   Cada contenedor tiene un tipo de iterador diferente, pero todos siguen el
+mismo formato: Los iteradores que representan referencias a elementos de un
+<code class='lstinline'><span style='color:#000000'>std::vector&lt;</span><span style='color:#FF00FF'>int</span><span style='color:#000000'>&gt;</span></code> son de tipo <code class='lstinline'><span style='color:#000000'>std::vector&lt;</span><span style='color:#FF00FF'>int</span><span style='color:#000000'>&gt;::iterator</span></code>, los iteradores que
+representan referencias a elementos de un <code class='lstinline'><span style='color:#000000'>std::set&lt;</span><span style='color:#FF00FF'>int</span><span style='color:#000000'>&gt;</span></code> son de tipo
+<code class='lstinline'><span style='color:#000000'>std::set&lt;</span><span style='color:#FF00FF'>int</span><span style='color:#000000'>&gt;::iterator</span></code>, etc.
+   
+</p>
+                                                                     
+
+                                                                     
+<!-- l. 1143 --><p class='noindent'><span class='paragraphHead' id='uso-del-auto-'><a id='x1-19000'></a><span class='ec-qplb-x-x-109'>Uso del auto. </span></span>
+   La palabra clave <code class='lstinline'><span style='color:#FF00FF'>auto</span></code> en C++ se usa para pedir al compilador que infiera el
+tipo de dato dado el valor de inicialización. Dado lo extenso que es escribir
+<code class='lstinline'><span style='color:#000000'>std::vector&lt;</span><span style='color:#FF00FF'>int</span><span style='color:#000000'>&gt;::iterator</span></code> todo el tiempo, en los ejemplos siguientes
+comenzaré usando la notación completa pero luego pasaré a usar la notación
+equivalente abreviada de <code class='lstinline'><span style='color:#FF00FF'>auto</span></code>.
+   
+</p>
+   <h4 class='subsectionHead' id='iteradores-de-stdvector-y-stddeque'><span class='titlemark'>2.1    </span> <a id='x1-200002.1'></a>Iteradores de std::vector y std::deque</h4>
+<!-- l. 1148 --><p class='noindent'>El manejo de iteradores para estas dos estructuras es muy similar entre sí.
+Ambas tienen métodos para obtener iteradores al inicio y al final del
+contenedor.
+</p><!-- l. 1150 --><p class='indent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-20002x1'>
+     <!-- l. 1151 --><p class='noindent'><span class='ec-qplb-x-x-109'>Método begin() y end().  </span>El método <code class='lstinline'><span style='color:#000000'>begin()</span></code> obtiene un iterador que
+     apunta al inicio de la secuencia (al inicio del primer elemento), mientras
+     que el método <code class='lstinline'><span style='color:#000000'>end()</span></code> obtiene un iterador que apunta al final de la secuencia
+     (al <span class='ec-qplb-x-x-109'>final </span>del último elemento). </p><!-- l. 1152 -->
+     <pre class='lstlisting' id='listing-108'><span class='label'><a id='x1-20003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-20004r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;::</span></span><span style='color:#000000'><span class='ectt-1095'>iterator</span></span><span style='color:#000000'> <span class='ectt-1095'>beg = v.begin();</span> 
+</span><span class='label'><a id='x1-20005r3'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;::</span></span><span style='color:#000000'><span class='ectt-1095'>iterator</span></span><span style='color:#000000'> <span class='ectt-1095'>end = v.end();</span> 
+</span><span class='label'><a id='x1-20006r4'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <div class='center'>
+<!-- l. 1157 --><p class='noindent'>
+</p><!-- l. 1158 --><p class='noindent'><img alt='31415beengd == vv.b.eengdin(())' src='main12x.svg' /></p></div>
+     </li>
+                                                                     
+
+                                                                     
+<li class='enumerate' id='x1-20008x2'>
+     <!-- l. 1194 --><p class='noindent'><span class='ec-qplb-x-x-109'>Incremento y decremento.  </span>Los iteradores se pueden mover una posición
+     hacia efrente o hacia atrás usando los operadores de preincremento <code class='lstinline'><span style='color:#000000'>++</span></code> y
+     predecremento <code class='lstinline'><span style='color:#000000'>--</span></code>. Estos operadores afectan al iterador sobre el que se
+     aplican. </p><!-- l. 1195 -->
+     <pre class='lstlisting' id='listing-111'><span class='label'><a id='x1-20009r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-20010r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;::</span></span><span style='color:#000000'><span class='ectt-1095'>iterator</span></span><span style='color:#000000'> <span class='ectt-1095'>ptr = v.begin();</span> 
+</span><span class='label'><a id='x1-20011r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptr apunta a 3</span> 
+</span><span class='label'><a id='x1-20012r4'></a></span> 
+<span class='label'><a id='x1-20013r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>++ptr;</span> 
+</span><span class='label'><a id='x1-20014r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptr apunta a 1</span> 
+</span><span class='label'><a id='x1-20015r7'></a></span> 
+<span class='label'><a id='x1-20016r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>++ptr;</span> 
+</span><span class='label'><a id='x1-20017r9'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptr apunta a 4</span> 
+</span><span class='label'><a id='x1-20018r10'></a></span> 
+<span class='label'><a id='x1-20019r11'></a></span><span style='color:#000000'>    <span class='ectt-1095'>--ptr;</span> 
+</span><span class='label'><a id='x1-20020r12'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptr apunta a 3</span> 
+</span><span class='label'><a id='x1-20021r13'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-20023x3'>
+     <!-- l. 1209 --><p class='noindent'><span class='ec-qplb-x-x-109'>Movimiento a N pasos.  </span>Si se le suma una cantidad entera <code class='lstinline'><span style='color:#000000'>n</span></code> a un iterador,
+     se obtiene otro iterador que apunta al mismo lugar que el iterador original
+     pero desplazado en <code class='lstinline'><span style='color:#000000'>n</span></code> posiciones (hacia enfrente o hacia atrás dependiendo
+     el signo de <code class='lstinline'><span style='color:#000000'>n</span></code>). </p><!-- l. 1210 -->
+     <pre class='lstlisting' id='listing-115'><span class='label'><a id='x1-20024r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-20025r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;::</span></span><span style='color:#000000'><span class='ectt-1095'>iterator</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = v.begin();</span> 
+</span><span class='label'><a id='x1-20026r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrA apunta a 3</span> 
+</span><span class='label'><a id='x1-20027r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;::</span></span><span style='color:#000000'><span class='ectt-1095'>iterator</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = v.begin() + 2;</span> 
+</span><span class='label'><a id='x1-20028r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrA sigue apuntando a 3</span> 
+</span><span class='label'><a id='x1-20029r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrB apunta a 4</span> 
+</span><span class='label'><a id='x1-20030r7'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-20032x4'>
+     <!-- l. 1218 --><p class='noindent'><span class='ec-qplb-x-x-109'>Diferencia entre dos iteradores.  </span>Se puede obtener la diferencia entre dos
+     iteradores, lo que resulta en la cantidad de elementos que se encuentra
+     entre ambos. </p><!-- l. 1219 -->
+     <pre class='lstlisting' id='listing-116'><span class='label'><a id='x1-20033r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-20034r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = v.begin();</span> 
+</span><span class='label'><a id='x1-20035r3'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = v.begin() + 2;</span> 
+</span><span class='label'><a id='x1-20036r4'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrC = v.end();</span> 
+</span><span class='label'><a id='x1-20037r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>ptrB - ptrA;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>2</span> 
+</span><span class='label'><a id='x1-20038r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>ptrC - ptrB;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>3</span> 
+</span><span class='label'><a id='x1-20039r7'></a></span><span style='color:#000000'>    <span class='ectt-1095'>ptrC - ptrA;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>5</span> 
+</span><span class='label'><a id='x1-20040r8'></a></span><span style='color:#000000'>  </span></pre>
+     
+     <div class='center'>
+<!-- l. 1228 --><p class='noindent'>
+</p><!-- l. 1229 --><p class='noindent'><img alt='31415ppptttrrrABC' src='main13x.svg' /></p></div>
+                                                                     
+
+                                                                     
+     </li>
+<li class='enumerate' id='x1-20042x5'>
+     <!-- l. 1267 --><p class='noindent'><span class='ec-qplb-x-x-109'>Derreferenciación de un iterador.  </span>Se puede obtener el valor al
+     que apunta un iterador usando el operador de derreferenciación
+     estándar <code class='lstinline'><span style='color:#000000'>*</span></code>. Esto obtiene el elemento a cuyo <span class='ec-qplb-x-x-109'>inicio </span>apunta el iterador.
+     Esto implica, en particular, que derreferenciar el <code class='lstinline'><span style='color:#000000'>end()</span></code> es ilegal
+     ya que éste apunta al <span class='ec-qplb-x-x-109'>final </span>del último elemento. Para obtener la
+     referencia al <span class='ec-qplb-x-x-109'>inicio </span>del último elemento se puede usar <span class='ec-qplb-x-x-109'>v.end() - 1</span>.
+     </p><!-- l. 1268 -->
+     <pre class='lstlisting' id='listing-119'><span class='label'><a id='x1-20043r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-20044r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>*(v.begin());</span>     </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>3</span> 
+</span><span class='label'><a id='x1-20045r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>*(v.begin() + 2);</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>4</span> 
+</span><span class='label'><a id='x1-20046r4'></a></span><span style='color:#000000'>      <span class='ectt-1095'>*(v.end() - 1);</span>   </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>5</span> 
+</span><span class='label'><a id='x1-20047r5'></a></span><span style='color:#000000'>      <span class='ectt-1095'>*(v.end());</span>       </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ERROR, v.end() apunta al *final*</span> 
+</span><span class='label'><a id='x1-20048r6'></a></span><span style='color:#000000'>    </span></pre>
+     
+     <!-- l. 1275 --><p class='noindent'>Este tipo de acceso también permite la modificación de los elementos
+     referenciados. </p><!-- l. 1276 -->
+     <pre class='lstlisting' id='listing-120'><span class='label'><a id='x1-20049r1'></a></span><span style='color:#000000'>      <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-20050r2'></a></span><span style='color:#000000'>      <span class='ectt-1095'>*(v.begin()) = 0;</span> 
+</span><span class='label'><a id='x1-20051r3'></a></span><span style='color:#000000'>      <span class='ectt-1095'>*(v.begin() + 2) = 0;</span> 
+</span><span class='label'><a id='x1-20052r4'></a></span><span style='color:#000000'>      </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>v ahora contiene {0, 1, 0, 1, 5}</span> 
+</span><span class='label'><a id='x1-20053r5'></a></span><span style='color:#000000'>    </span></pre>
+     
+     <div class='center'>
+<!-- l. 1282 --><p class='noindent'>
+</p><!-- l. 1283 --><p class='noindent'><img alt='31415345vvv.b.b.eeenggdiinn((()))-1+ 2' src='main14x.svg' /></p></div>
+     </li></ol>
+   
+   <h4 class='subsectionHead' id='iteradores-de-stdset'><span class='titlemark'>2.2    </span> <a id='x1-210002.2'></a>Iteradores de std::set</h4>
+<!-- l. 1330 --><p class='noindent'>Los iteradores a <code class='lstinline'><span style='color:#000000'>std::set</span></code> son idénticos en su uso en varios aspectos.
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-21002x1'>
+                                                                     
+
+                                                                     
+     <!-- l. 1332 --><p class='noindent'><span class='ec-qplb-x-x-109'>Métodos begin() y end().  </span>Iguales a los métodos descritos anteriormente.
+     </p><!-- l. 1333 -->
+     <pre class='lstlisting' id='listing-122'><span class='label'><a id='x1-21003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{3, 1, 4, 1, 5, 7};</span> 
+</span><span class='label'><a id='x1-21004r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {1, 3, 4, 5, 7} (en ese orden)</span> 
+</span><span class='label'><a id='x1-21005r3'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;::</span></span><span style='color:#000000'><span class='ectt-1095'>iterator</span></span><span style='color:#000000'> <span class='ectt-1095'>beg = s.begin();</span> 
+</span><span class='label'><a id='x1-21006r4'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>beg apunta al inicio del 1.</span> 
+</span><span class='label'><a id='x1-21007r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;::</span></span><span style='color:#000000'><span class='ectt-1095'>iterator</span></span><span style='color:#000000'> <span class='ectt-1095'>end = s.end();</span> 
+</span><span class='label'><a id='x1-21008r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>end apunta al *final* del 7.</span> 
+</span><span class='label'><a id='x1-21009r7'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-21011x2'>
+     <!-- l. 1341 --><p class='noindent'><span class='ec-qplb-x-x-109'>Incremento y decremento.  </span>De igual manera, se usa el preincremento <code class='lstinline'><span style='color:#000000'>++</span></code> y
+     el predecremento <code class='lstinline'><span style='color:#000000'>--</span></code> para mover un iterador al siguiente o anterior
+     elemento, respectivamente. </p><!-- l. 1342 -->
+     <pre class='lstlisting' id='listing-125'><span class='label'><a id='x1-21012r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{3, 1, 4, 1, 5, 7};</span> 
+</span><span class='label'><a id='x1-21013r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {1, 3, 4, 5, 7} (en ese orden)</span> 
+</span><span class='label'><a id='x1-21014r3'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptr = s.begin();</span> 
+</span><span class='label'><a id='x1-21015r4'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptr apunta al inicio de 1</span> 
+</span><span class='label'><a id='x1-21016r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>++ptr; ++ptr;</span> 
+</span><span class='label'><a id='x1-21017r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptr apunta al inicio de 4</span> 
+</span><span class='label'><a id='x1-21018r7'></a></span><span style='color:#000000'>    <span class='ectt-1095'>--ptr;</span> 
+</span><span class='label'><a id='x1-21019r8'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptr apunta al inicio de 3</span> 
+</span><span class='label'><a id='x1-21020r9'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-21022x3'>
+     <!-- l. 1352 --><p class='noindent'><span class='ec-qplb-x-x-109'>Derreferenciación.  </span>Esto es igual. Sin embargo, este tipo de acceso es <span class='ec-qplb-x-x-109'>solo
+     de lectura </span>en lugar de lectura y escritura como en el caso anterior.
+     </p><!-- l. 1353 -->
+     <pre class='lstlisting' id='listing-126'><span class='label'><a id='x1-21023r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{3, 1, 4, 1, 5, 7};</span> 
+</span><span class='label'><a id='x1-21024r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {1, 3, 4, 5, 7} (en ese orden)</span> 
+</span><span class='label'><a id='x1-21025r3'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptr = s.begin();</span> 
+</span><span class='label'><a id='x1-21026r4'></a></span><span style='color:#000000'>    <span class='ectt-1095'>*ptr;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>1</span> 
+</span><span class='label'><a id='x1-21027r5'></a></span><span style='color:#000000'>    <span class='ectt-1095'>++ptr;</span> 
+</span><span class='label'><a id='x1-21028r6'></a></span><span style='color:#000000'>    <span class='ectt-1095'>*ptr;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>3</span> 
+</span><span class='label'><a id='x1-21029r7'></a></span> 
+<span class='label'><a id='x1-21030r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>*ptr = 2;</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>Error</span> 
+</span><span class='label'><a id='x1-21031r9'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+<!-- l. 1365 --><p class='indent'>   A pesar de sus similaridades, los iteradores a <code class='lstinline'><span style='color:#000000'>std::set</span></code> no tienen las mismas
+capacidades que los iteradores a <code class='lstinline'><span style='color:#000000'>std::vector</span></code>. En particular, no son capaces de
+realizar de manera eficiente el <span class='ec-qplb-x-x-109'>movimiento a N pasos </span>y <span class='ec-qplb-x-x-109'>diferencia entre dos
+iteradores</span>.
+</p><!-- l. 1367 --><p class='indent'>   Es posible realizar estas dos operaciones de una manera un tanto diferente,
+sin embargo, se debe notar que <span class='ec-qplb-x-x-109'>son mucho más costosas computacionalmente
+que sus análogos en el vector</span>, por lo que se tienen que usar con consideración
+de su posible costo en el peor de los casos.
+</p><!-- l. 1369 --><p class='indent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-21033x1'>
+                                                                     
+
+                                                                     
+     <!-- l. 1370 --><p class='noindent'><span class='ec-qplb-x-x-109'>Movimiento a N pasos.  </span>Se puede obtener un iterador a un <code class='lstinline'><span style='color:#000000'>std::set</span></code>
+     desplazado <code class='lstinline'><span style='color:#000000'>N</span></code> pasos con las <span class='ec-qplb-x-x-109'>funciones </span><code class='lstinline'><span style='color:#000000'>std::next</span></code> y <code class='lstinline'><span style='color:#000000'>std::prev</span></code>.
+     <span class='ec-qplb-x-x-109'>Esto tiene un costo temporal proporcional al número de pasos.</span>
+     </p><!-- l. 1371 -->
+     <pre class='lstlisting' id='listing-133'><span class='label'><a id='x1-21034r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{3, 1, 4, 1, 5, 7};</span> 
+</span><span class='label'><a id='x1-21035r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {1, 3, 4, 5, 7} (en ese orden)</span> 
+</span><span class='label'><a id='x1-21036r3'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = s.begin();</span> 
+</span><span class='label'><a id='x1-21037r4'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = std::next(s.begin(), 2);</span> 
+</span><span class='label'><a id='x1-21038r5'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrC = std::prev(s.end(), 2);</span> 
+</span><span class='label'><a id='x1-21039r6'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>/*</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrA apunta al inicio de 1</span> 
+</span><span class='label'><a id='x1-21040r7'></a></span><span style='color:#009900'>       <span class='ectt-1095'>ptrB apunta al inicio de 4</span> 
+</span><span class='label'><a id='x1-21041r8'></a></span><span style='color:#009900'>       <span class='ectt-1095'>ptrC apunta al inicio de 5 */</span> 
+</span><span class='label'><a id='x1-21042r9'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-21044x2'>
+     <!-- l. 1381 --><p class='noindent'><span class='ec-qplb-x-x-109'>Diferencia entre dos iteradores.  </span>Para lograr esto con los iteradores a
+     conjuntos, se usa la <span class='ec-qplb-x-x-109'>función </span><code class='lstinline'><span style='color:#000000'>std::distance</span></code>. <span class='ec-qplb-x-x-109'>Esto tiene un costo temporal
+     proporcional al número de elementos entre los dos iteradores dados.</span>
+     </p><!-- l. 1382 -->
+     <pre class='lstlisting' id='listing-135'><span class='label'><a id='x1-21045r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{3, 1, 4, 1, 5, 7};</span> 
+</span><span class='label'><a id='x1-21046r2'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>s contiene {1, 3, 4, 5, 7} (en ese orden)</span> 
+</span><span class='label'><a id='x1-21047r3'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = s.begin();</span> 
+</span><span class='label'><a id='x1-21048r4'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = std::next(s.begin(), 2);</span> 
+</span><span class='label'><a id='x1-21049r5'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrC = std::prev(s.end(), 2);</span> 
+</span><span class='label'><a id='x1-21050r6'></a></span> 
+<span class='label'><a id='x1-21051r7'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::distance(ptrA, ptrB);</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>2</span> 
+</span><span class='label'><a id='x1-21052r8'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::distance(ptrB, ptrC);</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>1</span> 
+</span><span class='label'><a id='x1-21053r9'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::distance(ptrA, ptrC);</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>3</span> 
+</span><span class='label'><a id='x1-21054r10'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+   
+   <h3 class='sectionHead' id='funciones-de-busqueda'><span class='titlemark'>3    </span> <a id='x1-220003'></a>Funciones de búsqueda</h3>
+   
+   <h4 class='subsectionHead' id='sobre-un-stdvector-ordenado'><span class='titlemark'>3.1    </span> <a id='x1-230003.1'></a>Sobre un std::vector ordenado</h4>
+<!-- l. 1401 --><p class='noindent'>Existen funciones que ordenan y realizan búsquedas eficientes sobre secuencias
+ordenadas.
+</p><!-- l. 1403 --><p class='indent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-23002x1'>
+     <!-- l. 1404 --><p class='noindent'><span class='ec-qplb-x-x-109'>Ordenar un std::vector.  </span>Para ordenar de menor a mayor los elementos de
+     un <code class='lstinline'><span style='color:#000000'>std::vector</span></code> se usa la función <code class='lstinline'><span style='color:#000000'>std::sort</span></code>. Recibe como entrada dos
+     iteradores que apuntan respectivamente al inicio y al final de la secuencia
+     que se quiere ordenar. </p><!-- l. 1405 -->
+                                                                     
+
+                                                                     
+     <pre class='lstlisting' id='listing-138'><span class='label'><a id='x1-23003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{3, 1, 4, 1, 5};</span> 
+</span><span class='label'><a id='x1-23004r2'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::sort(v.begin(), v.end());</span> </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ordena todos los elementos</span> 
+</span><span class='label'><a id='x1-23005r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>v ahora contiene {1, 1, 3, 4, 5}</span> 
+</span><span class='label'><a id='x1-23006r4'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-23008x2'>
+     <!-- l. 1410 --><p class='noindent'><span class='ec-qplb-x-x-109'>Buscar el inicio del primer elemento mayor o igual a un valor dado.  </span>Se
+     puede encontrar un iterador que apunta al inicio del primer elemento que
+     es mayor o igual a un valor dado con la función <code class='lstinline'><span style='color:#000000'>std::lower_bound</span></code>. La
+     secuencia dada debe estar ordenada para que esto funcione correctamente.
+     Recibe como argumentos el inicio y el final de la secuencia y el valor
+     buscado. </p><!-- l. 1411 -->
+     <pre class='lstlisting' id='listing-140'><span class='label'><a id='x1-23009r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{1, 5, 7, 7, 11, 30};</span> 
+</span><span class='label'><a id='x1-23010r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = std::lower_bound(v.begin(), v.end(), 6);</span> 
+</span><span class='label'><a id='x1-23011r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrA apunta al primer 7</span> 
+</span><span class='label'><a id='x1-23012r4'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = std::lower_bound(v.begin(), v.end(), 11);</span> 
+</span><span class='label'><a id='x1-23013r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrB apunta a 11</span> 
+</span><span class='label'><a id='x1-23014r6'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-23016x3'>
+     <!-- l. 1418 --><p class='noindent'><span class='ec-qplb-x-x-109'>Buscar el final del último elemento menor o igual a un valor dado.  </span>De
+     igual manera, se puede obtener un iterador al <span class='ec-qplb-x-x-109'>final </span>del último elemento que
+     es menor o igual a un valor dado con la función <code class='lstinline'><span style='color:#000000'>std::upper_bound</span></code>.
+     </p><!-- l. 1419 -->
+     <pre class='lstlisting' id='listing-142'><span class='label'><a id='x1-23017r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::vector&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>v{1, 5, 7, 7, 11, 30};</span> 
+</span><span class='label'><a id='x1-23018r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = std::upper_bound(v.begin(), v.end(), 8);</span> 
+</span><span class='label'><a id='x1-23019r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrA apunta al final del segundo 7 y al inicio del 11</span> 
+</span><span class='label'><a id='x1-23020r4'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = std::upper_bound(v.begin(), v.end(), 5);</span> 
+</span><span class='label'><a id='x1-23021r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrB apunta al final del 5 y al inicio del 7</span> 
+</span><span class='label'><a id='x1-23022r6'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+   
+   <h4 class='subsectionHead' id='sobre-un-stdset'><span class='titlemark'>3.2    </span> <a id='x1-240003.2'></a>Sobre un std::set</h4>
+<!-- l. 1431 --><p class='noindent'>El <code class='lstinline'><span style='color:#000000'>std::set</span></code> es un contenedor que mantiene sus elementos ordenados
+automáticamente, por lo que siempre le es posible realizar operaciones de
+búsqueda eficientes como las de <code class='lstinline'><span style='color:#000000'>std::lower_bound()</span></code> y <code class='lstinline'><span style='color:#000000'>std::upper_bound()</span></code>.
+</p><!-- l. 1433 --><p class='indent'>
+     </p><ol class='enumerate1'>
+<li class='enumerate' id='x1-24002x1'>
+                                                                     
+
+                                                                     
+     <!-- l. 1434 --><p class='noindent'><span class='ec-qplb-x-x-109'>Buscar el inicio del primer elemento mayor o igual a un valor dado.  </span>Se
+     usa el <span class='ec-qplb-x-x-109'>método </span><code class='lstinline'><span style='color:#000000'>lower_bound()</span></code> que recibe el elemento buscado como
+     argumento. </p><!-- l. 1435 -->
+     <pre class='lstlisting' id='listing-147'><span class='label'><a id='x1-24003r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{1, 5, 7, 11, 30};</span> 
+</span><span class='label'><a id='x1-24004r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = s.lower_bound(6);</span> 
+</span><span class='label'><a id='x1-24005r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrA apunta al inicio del 7</span> 
+</span><span class='label'><a id='x1-24006r4'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = s.lower_bound(11);</span> 
+</span><span class='label'><a id='x1-24007r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrB apunta al inicio del 11</span> 
+</span><span class='label'><a id='x1-24008r6'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li>
+<li class='enumerate' id='x1-24010x2'>
+     <!-- l. 1442 --><p class='noindent'><span class='ec-qplb-x-x-109'>Buscar el final del último elemento menor o igual a un valor dado.  </span>Se usa
+     el <span class='ec-qplb-x-x-109'>método </span><code class='lstinline'><span style='color:#000000'>upper_bound()</span></code> que recibe el elemento buscado como
+     argumento. </p><!-- l. 1443 -->
+     <pre class='lstlisting' id='listing-149'><span class='label'><a id='x1-24011r1'></a></span><span style='color:#000000'>    <span class='ectt-1095'>std::set&lt;</span></span><span style='color:#FF00FF'><span class='ectt-1095'>int</span></span><span style='color:#000000'><span class='ectt-1095'>&gt;</span></span><span style='color:#000000'> <span class='ectt-1095'>s{1, 5, 7, 11, 30};</span> 
+</span><span class='label'><a id='x1-24012r2'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrA = s.upper_bound(12);</span> 
+</span><span class='label'><a id='x1-24013r3'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrA apunta al final del 11 y al inicio del 30</span> 
+</span><span class='label'><a id='x1-24014r4'></a></span><span style='color:#000000'>    </span><span style='color:#FF00FF'><span class='ectt-1095'>auto</span></span><span style='color:#000000'> <span class='ectt-1095'>ptrB = s.upper_bound(5);</span> 
+</span><span class='label'><a id='x1-24015r5'></a></span><span style='color:#000000'>    </span><span style='color:#009900'><span class='ectt-1095'>//</span></span><span style='color:#009900'> <span class='ectt-1095'>ptrB apunta al final del 5 y al inicio del 7</span> 
+</span><span class='label'><a id='x1-24016r6'></a></span><span style='color:#000000'>  </span></pre>
+     
+     </li></ol>
+    
+</body> 
+</html>
