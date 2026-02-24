@@ -522,7 +522,7 @@ Esto se puede observar si se comparan las áreas del problema \(N_{6, 6}\) y la 
 <li>Dentro de cada renglón, el recorrido se realizará de <b>izquierda a derecha</b> (este orden es importante).</li>
 <li>Se mantendrá un <b>stack</b> de rectángulos con elementos iguales con alturas incrementales. La cima de la pila será el último rectángulo visto.</li>
 <li>Cada vez que se avance de \(j\) a \(j + 1\) se tiene que agregar la nueva área de ancho 1 con altura \(H_{i, j}\) (donde \(H_{i, j}\) es la altura de elementos iguales a partir de la posición \((i, j)\) hacia arriba).</li>
-<li>Cada que se agregue un área se tiene que iterar sobre el rectángulo más reciente visto (la cima de la pila), si éste tiene una altura menor a la nueva área entonces debe ser removido y su ancho sumado al ancho de la nueva área agregada. Este proceso se repite mientras la cima de la pila tenga un rectángulo más alto que el área agregada.</li>
+<li>Cada que se agregue un área se tiene que iterar sobre el rectángulo más reciente visto (la cima de la pila), si éste tiene una altura menor o igual a la nueva área entonces debe ser removido y su ancho sumado al ancho de la nueva área agregada. Este proceso se repite mientras la cima de la pila tenga un rectángulo más alto que el área agregada.</li>
 <li>Cada rectángulo, adicionalmente a su ancho y su altura, tiene que recordar el área <b>total</b> que le precede, esto se puede actualizar entre cada adición de área.</li>
 <li>Una vez que se ha agregado el área nueva, se puede sumar su respuesta a la solución total.</li>
 <li>Cada vez que se pase de \((i, j)\) a \((i, j + 1)\) y \(A_{i, j} \neq A_{i, j + 1}\) se tiene que <b>vacíar</b> la pila, ya que todos los rectángulos vistos anteriormente ahora serán inválidos.</li>
