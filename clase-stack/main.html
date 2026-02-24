@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<!-- 2026-02-23 Mon 18:46 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Miguel" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8cbc539">1. Clase 2 - Algunos problemas de stack</a>
+<ul>
+<li><a href="#org1b29d8f">1.1. El problema del siguiente más grande</a></li>
+<li><a href="#orge0d7ff9">1.2. El problema del número de submatrices con elementos iguales</a>
+<ul>
+<li><a href="#orgfbb8f6d">1.2.1. Discusión introductoria</a></li>
+<li><a href="#orgd11cbad">1.2.2. Solución</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8cbc539" class="outline-2">
+<h2 id="org8cbc539"><span class="section-number-2">1.</span> Clase 2 - Algunos problemas de stack</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+La pila es una estructura secuencial que solo nos permite acceso y modificación de un solo extremo: La cima de la pila.
+</p>
+
+<p>
+Es útil en situaciones en las que solo nos importan elementos recientemente añadidos y cuando adicionalmente podemos fácilmente <i>descartar</i> un elemento como irrelevante para el cómputo futuro.
+</p>
+
+<p>
+Se vieron dos problemas clásicos de la aplicación de esta estructura:
+</p>
+<ol class="org-ol">
+<li>Encontrar el siguiente elemento más grande para todos los elementos de un arreglo en tiempo \(O(N)\).</li>
+<li>Contar el número de submatrices con elementos iguales de una matriz dada en tiempo \(O(N \times M)\).</li>
+</ol>
+</div>
+<div id="outline-container-org1b29d8f" class="outline-3">
+<h3 id="org1b29d8f"><span class="section-number-3">1.1.</span> El problema del siguiente más grande</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Se tiene un arreglo \(A\) de tamaño \(N\). Se quiere obtener otro arreglo \(G\) de tamaño \(N\) de tal manera que \(G_i\) sea para el elemento \(A_i\) el valor del siguiente elemento a su derecha que es mayor a él. Es decir, \(G_i\) es el primer \(A_j\) que cumple simultáneamente que \(j > i\) y \(A_j > A_i\). En caso de que no exista tal elemento para un \(A_i\) dado entonces se define \(G_i = \infty\).
+</p>
+
+<p>
+Por ejemplo, para \(A = [2, 5, 4, 3, 10, 5, 12]\), se tiene que calcular \(G = [5, 10, 10, 10, 12, 12, \infty]\).
+</p>
+
+<p>
+Hay varias pistas que el problema nos da sobre su solución, en particular, podemos hacer las siguientes observaciones:
+</p>
+
+<p>
+<i>[observación]</i> <b>Redundancia (cómputo repetido).</b> El problema de computar \(G_i\) está íntimamente relacionado con el problema de computar \(G_{i + 1}\). En particular, el problema de computar \(G_i\) es practicamente el mismo problema que computar \(G_{i + 1}\) pero con un nuevo elemento extra (que es \(A_i\)) y con un punto de inicio diferente (se empieza desde \(A_i\) en lugar de \(A_{i + 1}\)). Esto nos sugiere <b>procesar desde el problema más pequeño</b> (\(G_N\)) <b>hasta el problema más grande</b> (\(G_1\)) o de <b>derecha a izquierda</b>.
+</p>
+
+<p>
+<i>[observación]</i> <b>Efecto de anulación de elementos.</b> Es también posible observar que existe un cierto efecto de <i>anulación</i> entre elementos. Si, por ejemplo, en cualquier parte del arreglo \(A\) tenemos \([... 5, 2, 3, ...]\) sabemos que el elemento \(5\) <b>anula</b> (u opaca, o hace irrelevantes) a los elementos \(2\) y \(3\). El elemento \(5\) hace imposible que el \(2\) o el \(3\) sea el siguente valor más grande para cualquier elemento que esté a la izquierda del \(5\), ya que cualquier elemento a su izquierda primero va a encontrar al \(5\) antes que al \(2\) o al \(3\).
+</p>
+
+<p>
+<i>[propuesta]</i> Estas dos pistas juntas nos apuntan a una posible aplicación de una pila: Vamos a procesar el arreglo y computar \(G_i\) de derecha a izquierda manteniendo una pila que mantenga los elementos <b>no anulados</b> por ningún otro elemento. La solución para un \(i\) particular es el elemento <b>más reciente</b> que no ha sido anulado por ningún otro elemento (que será precisamente la cima de la pila).
+</p>
+
+<p>
+Inicialmente, entonces, nuestra pila estará vacía.
+</p>
+
+<p>
+Al procesar el primer elemento (que es \(A_N\) en el proceso de derecha a izquierda) nuestro programa inmediatemente sabe que la solución para este elemento es \(G_N = \infty\) porque no existe ningún elemento a su derecha que sea mayor (lo sabemos porque la pila está vacía). Terminamos insertando \(A_N\) a la pila, ya que es el elemento más reciente que no ha sido anulado.
+</p>
+
+<p>
+Al procesar el segundo elemento (que es \(A_{N - 1}\)), primero tenemos que determinar si este elemento <b>anula/opaca</b> a algún elemento de la pila (que en este momento solo tiene al elemento \(A_N\)). Para lograr esto, tenemos que saber si \(A_{N - 1}\) <b>anula</b> a \(A_N\), esto es fácil de determinar comparando las dos cantidades, si \(A_{N} \leq A_{N - 1}\) entonces \(A_N\) es opacado por \(A_{N - 1}\) y debe ser removido de la pila, en caso contrario (cuando \(A_N > A_{N - 1}\)) entonces \(A_N\) sigue siendo un elemento no anulado y sigue siendo la cima de la pila.
+</p>
+
+<p>
+Cuando se hace esto, se encontrarán dos posibles escenarios:
+</p>
+
+<ol class="org-ol">
+<li>Si la pila está vacía (porque \(A_{N - 1}\) anuló a \(A_N\)) entonces \(G_{N - 1} = \infty\) (ya que \(A_{N - 1}\) no tiene ningún elemento siguiente que es mayor a él).</li>
+<li>La pila se quedó con el elemento \(A_{N - 1}\) ya que éste era <b>mayor</b> a \(A_N\). En este caso sabemos que \(G_{N - 1} = A_N\).</li>
+</ol>
+
+<p>
+Después de esto, sin importar lo que ha sucedido hasta el momento, insertamos a \(A_{N - 1}\) a la cima de la pila ya que es el elemento más reciente que no ha sido anulado.
+</p>
+
+<p>
+Continuar procesando el arreglo es exactamente lo mismo.
+</p>
+
+<p>
+Al procesar el \(i\)-ésimo elemento (que es \(A_i\)), primero tenemos que determinar si este elemento <b>anula/opaca</b> a algunos elementos anteriores de la pila. Para lograr esto, iterativamente removemos la cima de la pila mientras ésta sea <b>menor o igual</b> a \(A_i\) (ya que esto implica que \(A_i\) los <b>anula/opaca</b>). Esto nos dejará en dos posibles situaciones:
+</p>
+
+<ol class="org-ol">
+<li>Es posible que removamos todos los valores de la pila porque ninguno era <b>mayor</b> a \(A_i\) en cuyo caso sabemos que la solución es \(G_i = \infty\)</li>
+<li>La pila se quedó con elementos restantes y su cima actual es un valor <b>mayor</b> a \(A_i\). En este caso, si denotamos con \(K\) al valor en la cima de la pila, tenemos que \(G_{N - 1} = K\) ya que sabemos que <b>\(K\) es el elemento más reciente que no ha sido anulado por ningún otro elemento</b> (<b>incluyendo a \(A_i\)</b>) y por lo tanto es el siguiente mayor a \(A_i\).</li>
+</ol>
+
+<p>
+Al final de procesar \(A_i\) siempre lo insertamos a la cima de la pila ya que es el elemento más reciente que no ha sido anulado.
+</p>
+
+<p>
+Esto ya resuelve el problema.
+</p>
+</div>
+</div>
+<div id="outline-container-orge0d7ff9" class="outline-3">
+<h3 id="orge0d7ff9"><span class="section-number-3">1.2.</span> El problema del número de submatrices con elementos iguales</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Se tiene una matriz de tamaño \(N \times M\) llamada \(A\). Se pide computar el número de submatrices de la matriz \(A\) cuyos elementos son todos iguales. Dos submatrices se consideran diferentes si son porciones diferentes de la matriz original, aún si sus tamaños y sus elementos son iguales.
+</p>
+
+<p>
+Formalmente, las submatrices en esta clase de problemas suele definirse por la posición de su esquina superior izquierda \((i_l, j_l)\) y la posición de su esquina inferior derecha \((i_h, j_h)\) o equivalentemente la tupla compuesta por la unión de estos datos \((i_l, j_l, i_h, j_h)\) que se puede llamar su tupla de límites (pues son los límites en los índices que definen a la submatriz).
+</p>
+
+<p>
+Como aclaración, a continuación se muestran tres submatrices que se cuentan como submatrices diferentes para el problema (a pesar de que dos de estas submatrices tienen el mismo tamaño y contienen los mismos elementos). 
+</p>
+
+
+<div id="orge2ef129" class="figure">
+<p><img src="diagram.svg" alt="diagram.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 1: </span>Un ejemplo de tres submatrices <b>diferentes</b>.</p>
+</div>
+
+<p>
+Este es un problema significativamente más difícil que el anteriormente expuesto, pero sigue sin embargo siendo atacable por un acercamiento similar.
+</p>
+</div>
+<div id="outline-container-orgfbb8f6d" class="outline-4">
+<h4 id="orgfbb8f6d"><span class="section-number-4">1.2.1.</span> Discusión introductoria</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+En primer lugar, el problema en su forma original <i>se mueve mucho</i>. Si imaginamos todas las posibles submatrices que se pueden formar para una matriz dada las posibilidades son muchas y muy diversas. Sin mucho órden entre sí, el problema se siente inquebrantable.
+</p>
+
+<p>
+Este problema, como muchos otros, es susceptible a una transformación que surge al <b>fijar puntos</b> del problema. En lugar de pensar en el problema original, crearemos muchos pequeños problemas que después unimos para obtener la solución al problema original. En particular, vamos a dejar <b>fija</b> una parte de las submatrices que estamos buscando.
+</p>
+
+<p>
+Una submatriz tiene 4 parámetros que la definen (la tupla que se mencionó anteriormente) y cada uno se puede fijar para crear un problema distinto. Existen muchas posibles combinaciones, cada una tiene su propio mérito y debe ser explorada de acuerdo a la intuición particular de cada persona.
+</p>
+
+<p>
+Por exploración, una de las mejores cosas por fijar en este problema es <b>fijar la esquina inferior derecha</b> de la submatriz.
+</p>
+
+<p>
+Es decir, en lugar de buscar computar <i>«el número de submatrices iguales de la matriz \(A\)»</i> ahora buscamos computar <i>«el número de submatrices iguales de la matriz \(A\), <b>que tienen como esquina inferior derecha a</b> \((i, j)\)»</i>. Llamemos al número de submatrices con elementos iguales que terminan en la celda \((i, j)\) como \(N_{i, j}\). Buscamos ahora cómo computar estos valores, que simplemente sumamos para obtener la respuesta original boscada.
+</p>
+
+<p>
+A primera impresión puede parecer un avance modesto y quizá hasta insignificante, pero se logra algo importante: Se ha <b>descompuesto</b> el problema original que era computar un solo número (el número de submatrices iguales) y ahora tenemos \(N \times M\) subproblemas diferentes y relacionados entre sí (uno por cada posible esquina inferior derecha de la matriz).
+</p>
+
+<p>
+<b>Pero</b>  <i>¡la situación solo ha empeorado!</i> (se puede objetar) <i>antes teníamos un problema ¡ahora tenemos \(N \times M\) problemas!</i> Y es verdad, el número de problemas solo se ha multiplicado.
+</p>
+
+<p>
+Sin embargo, muchos de varios estos subproblemas ahora son triviales: Por ejemplo, es extremadamente evidente que la cantidad de submatrices iguales que tienen como esquina inferior derecha a la celda \((1, 1)\) es \(1\) (la submatriz compuesta por solo esta celda).
+</p>
+
+<p>
+Y, como se verá a continuación, si no son triviales, varios de estos problemas ahora están relacionados y presentan mucho grado de <b>redundancia</b> (cómputo repetido) entre sí, así como en el problema anterior.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd11cbad" class="outline-4">
+<h4 id="orgd11cbad"><span class="section-number-4">1.2.2.</span> Solución</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Sea \(N_{i, j}\) la cantidad de submatrices iguales cuya esquina inferior derecha es la celda \(A_{i, j}\). Si denotamos con \(N_{\text{total}}\) a la solución del problema original, entonces \(N_{\text{total}} = \sum N_{i, j}\). Donde la suma es sobre todas las posibles esquinas inferiores izquierdas \((i, j)\) (que son todas las \(N \times M\) posibles celdas en la matriz).
+</p>
+
+<p>
+<i>[observación]</i> <b>Redundancia.</b> Sea \((i, j)\) una posición en la matriz \(A\) con valor \(A_{i, j}\). Si el elemento en la posición \((i, j + 1)\) existe y tiene el mismo valor \(A_{i, j + 1} = A_{i, j}\) entonces los problemas \(N_{i, j}\) y \(N_{i, j + 1}\) son parecidos entre sí. En particular, <b>muchas submatrices que terminan en \((i, j)\) se pueden extender a submatrices que terminan en \((i, j + 1)\)</b>. Se muestran ejemplos de esto en los siguientes diagramas.
+</p>
+
+
+<div id="orgc7886ea" class="figure">
+<p><img src="./redun-1.svg" alt="redun-1.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 2: </span>Dos submatrices iguales que terminan en \((6, 11)\).</p>
+</div>
+
+
+<div id="orgd6ce801" class="figure">
+<p><img src="./redun-2.svg" alt="redun-2.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 3: </span>Dos submatrices iguales que terminan en \((6, 12)\) y que son extensiones de las anteriores submatrices.</p>
+</div>
+
+<p>
+Lo que nos sugiere esto es que primero debemos procesar \((i, j)\) y luego procesar a \((i, j + 1)\) de <b>izquierda a derecha</b>. Adicionalmente, nos sugiere también que deberíamos procesar <b>renglón por renglón</b>, ya que cada instancia del problema en un renglón se parece a las demás instancias del problema en el mismo renglón.
+</p>
+
+<p>
+<i>[observación]</i> <b>Correspondencia entre submatrices y celdas.</b> Si estamos computando \(N_{i, j}\), queremos contar el número de submatrices con esquina inferior derecha \((i, j)\). Podemos <b>identificar</b> cada una de estas submatrices posibles con su <b>esquina superior izquierda</b>. Es decir, cada submatriz que contemos va a corresponder con una celda. Podemos entonces dejar de pensar en submatrices y pensar que estamos contando el número de celdas que pueden servir como esquinas superiores derechas <b>permisibles</b>.
+</p>
+
+<p>
+Usando el ejemplo anterior para dos submatrices que terminan en \((6, 12)\). Se resaltan las dos celdas asociadas a cada submatriz.
+</p>
+
+
+<div id="org9ab324f" class="figure">
+<p><img src="./corr.svg" alt="corr.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 4: </span>Correspondencia entre dos submatrices con esquina inferior derecha \((6, 12)\) con celdas <b>identificadoras</b>.</p>
+</div>
+
+<p>
+Hablando más sobre las submatrices que terminan en \((6, 12)\). Podemos con la correspondencia mencionada anteriormente dibujar gráficamente todas las posibles esquinas superiores izquierdas permisibles. Lo que se muestra en la siguiente figura.
+</p>
+
+
+<div id="org33a840a" class="figure">
+<p><img src="./6-12-mono.svg" alt="6-12-mono.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 5: </span>Ilustración de todas las posibles esquinas superiores izquierdas para la esquina inferior derecha \((6, 12)\). Todas las celdas resaltadas en rojo son permisibles, todas las que solo están en gris son celdas iguales pero no permisibles (ya que generarían una submatriz con diferentes valores).</p>
+</div>
+
+<p>
+La solución para \(N_{6, 12}\) corresponde entonces con el <b>área</b> mostrada en rojo.
+</p>
+
+<p>
+Podemos con este diagrama hacer algunas observaciones generales.
+</p>
+
+<p>
+<i>[Observación]</i> El área de celdas permisibles se puede descomponer en rectángulos.
+</p>
+
+<p>
+<i>[Observación]</i> Los rectángulos que componen a una solución tienen alturas incrementales.
+</p>
+
+
+<div id="org94e5536" class="figure">
+<p><img src="./6-12-nonmono.svg" alt="6-12-nonmono.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 6: </span>Descomposición de una solución en rectángulos.</p>
+</div>
+
+<p>
+Con todo lo anterior, podemos ver que si de alguna forma pudiéramos mantener la lista de rectángulos vistos hasta el momento junto con el área que cubren dichos rectángulos entonces podríamos ir actualizando la solución mientras recorremos las columnas \(j\) de izquierda a derecha.
+</p>
+
+<p>
+Para lograr esto necesitamos hacer otra observación.
+</p>
+
+<p>
+<i>[Observación]</i> Cada vez que se agrega una nueva porción al área cuando se transiciona de \((i, j)\) a \((i, j + 1)\) la altura recién agregada <b>consume</b> a los rectángulos previos con alturas <b>mayores o iguales</b>.
+</p>
+
+<p>
+Esto se puede observar si se comparan las áreas del problema \(N_{6, 6}\) y la del problema \(N_{6, 7}\).
+</p>
+
+
+<div id="org2c75fa4" class="figure">
+<p><img src="./6-6.svg" alt="6-6.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 7: </span>Solución para esquina inferior derecha \((6, 6)\).</p>
+</div>
+
+
+<div id="org57e8a25" class="figure">
+<p><img src="./6-7.svg" alt="6-7.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figura 8: </span>Solución para esquina inferior derecha \((6, 7)\), la nueva área verde tuvo que <b>consumir</b> a la anterior área verde, reduciendo su altura y sumando su ancho.</p>
+</div>
+
+<p>
+<i>[Propuesta]</i> Con todo lo anterior se puede vislumbrar la siguiente solución al problema.
+</p>
+<ul class="org-ul">
+<li>Se va a contar \(N_{i, j}\) por cada posible \((i, j)\).</li>
+<li>El recorrido se realizará <b>renglón por renglón</b> (el orden en que se realice es irrelevante ya que son problemas independientes).</li>
+<li>Dentro de cada renglón, el recorrido se realizará de <b>izquierda a derecha</b> (este orden es importante).</li>
+<li>Se mantendrá un <b>stack</b> de rectángulos con elementos iguales con alturas incrementales. La cima de la pila será el último rectángulo visto.</li>
+<li>Cada vez que se avance de \(j\) a \(j + 1\) se tiene que agregar la nueva área de ancho 1 con altura \(H_{i, j}\) (donde \(H_{i, j}\) es la altura de elementos iguales a partir de la posición \((i, j)\) hacia arriba).</li>
+<li>Cada que se agregue un área se tiene que iterar sobre el rectángulo más reciente visto (la cima de la pila), si éste tiene una altura menor a la nueva área entonces debe ser removido y su ancho sumado al ancho de la nueva área agregada. Este proceso se repite mientras la cima de la pila tenga un rectángulo más alto que el área agregada.</li>
+<li>Cada rectángulo, adicionalmente a su ancho y su altura, tiene que recordar el área <b>total</b> que le precede, esto se puede actualizar entre cada adición de área.</li>
+<li>Una vez que se ha agregado el área nueva, se puede sumar su respuesta a la solución total.</li>
+<li>Cada vez que se pase de \((i, j)\) a \((i, j + 1)\) y \(A_{i, j} \neq A_{i, j + 1}\) se tiene que <b>vacíar</b> la pila, ya que todos los rectángulos vistos anteriormente ahora serán inválidos.</li>
+<li>Cada vez que se pase de un renglón a otro se tiene que <b>vacíar</b> la pila por razones idénticas.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Miguel</p>
+<p class="date">Created: 2026-02-23 Mon 18:46</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
