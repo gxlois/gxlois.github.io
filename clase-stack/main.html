@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2026-02-23 Mon 19:59 -->
+<!-- 2026-02-23 Mon 20:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -232,13 +232,13 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org91d02e5">1. Clase 2 - Algunos problemas de stack</a>
+<li><a href="#org00ebdd6">1. Clase 2 - Algunos problemas de stack</a>
 <ul>
-<li><a href="#org503bdaf">1.1. El problema del siguiente más grande</a></li>
-<li><a href="#org72ace5b">1.2. El problema del número de submatrices con elementos iguales</a>
+<li><a href="#org777b476">1.1. El problema del siguiente más grande</a></li>
+<li><a href="#orgf32aeec">1.2. El problema del número de submatrices con elementos iguales</a>
 <ul>
-<li><a href="#orgbb68dfd">1.2.1. Discusión introductoria</a></li>
-<li><a href="#orgb1a0535">1.2.2. Solución</a></li>
+<li><a href="#orgeee980e">1.2.1. Discusión introductoria</a></li>
+<li><a href="#org42ebf48">1.2.2. Solución</a></li>
 </ul>
 </li>
 </ul>
@@ -246,8 +246,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org91d02e5" class="outline-2">
-<h2 id="org91d02e5"><span class="section-number-2">1.</span> Clase 2 - Algunos problemas de stack</h2>
+<div id="outline-container-org00ebdd6" class="outline-2">
+<h2 id="org00ebdd6"><span class="section-number-2">1.</span> Clase 2 - Algunos problemas de stack</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 La pila es una estructura secuencial que solo nos permite acceso y modificación de un solo extremo: La cima de la pila.
@@ -265,8 +265,8 @@ Se vieron dos problemas clásicos de la aplicación de esta estructura:
 <li>Contar el número de submatrices con elementos iguales de una matriz dada en tiempo \(O(N \times M)\).</li>
 </ol>
 </div>
-<div id="outline-container-org503bdaf" class="outline-3">
-<h3 id="org503bdaf"><span class="section-number-3">1.1.</span> El problema del siguiente más grande</h3>
+<div id="outline-container-org777b476" class="outline-3">
+<h3 id="org777b476"><span class="section-number-3">1.1.</span> El problema del siguiente más grande</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Se tiene un arreglo \(A\) de tamaño \(N\). Se quiere obtener otro arreglo \(G\) de tamaño \(N\) de tal manera que \(G_i\) sea para el elemento \(A_i\) el valor del siguiente elemento a su derecha que es mayor a él. Es decir, \(G_i\) es el primer \(A_j\) que cumple simultáneamente que \(j > i\) y \(A_j > A_i\). En caso de que no exista tal elemento para un \(A_i\) dado entonces se define \(G_i = \infty\).
@@ -339,8 +339,8 @@ Esto ya resuelve el problema.
 </p>
 </div>
 </div>
-<div id="outline-container-org72ace5b" class="outline-3">
-<h3 id="org72ace5b"><span class="section-number-3">1.2.</span> El problema del número de submatrices con elementos iguales</h3>
+<div id="outline-container-orgf32aeec" class="outline-3">
+<h3 id="orgf32aeec"><span class="section-number-3">1.2.</span> El problema del número de submatrices con elementos iguales</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Se tiene una matriz de tamaño \(N \times M\) llamada \(A\). Se pide computar el número de submatrices de la matriz \(A\) cuyos elementos son todos iguales. Dos submatrices se consideran diferentes si son porciones diferentes de la matriz original, aún si sus tamaños y sus elementos son iguales.
@@ -355,10 +355,10 @@ Como aclaración, a continuación se muestran tres submatrices que se cuentan co
 </p>
 
 
-<div id="org610c840" class="figure">
+<div id="org4de3af9" class="figure">
 <p><img src="diagram.svg" alt="diagram.svg" class="org-svg" />
 </p>
-<p><span class="figure-number">Figura 1: </span>Un ejemplo de tres submatrices <b>diferentes</b>.</p>
+<p><span class="figure-number">Figura 1: </span>Un ejemplo de tres submatrices <b>diferentes</b> cuyos elementos son todos iguales (y por lo tanto son parte de cuenta en la respuesta).</p>
 </div>
 
 <p>
@@ -369,8 +369,8 @@ Como aclaración, a continuación se muestran tres submatrices que se cuentan co
 Este es un problema significativamente más difícil que el anteriormente expuesto, pero sigue sin embargo siendo atacable por un acercamiento similar.
 </p>
 </div>
-<div id="outline-container-orgbb68dfd" class="outline-4">
-<h4 id="orgbb68dfd"><span class="section-number-4">1.2.1.</span> Discusión introductoria</h4>
+<div id="outline-container-orgeee980e" class="outline-4">
+<h4 id="orgeee980e"><span class="section-number-4">1.2.1.</span> Discusión introductoria</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 En primer lugar, el problema en su forma original <i>se mueve mucho</i>. Si imaginamos todas las posibles submatrices que se pueden formar para una matriz dada las posibilidades son muchas y muy diversas. Sin mucho órden entre sí, el problema se siente inquebrantable.
@@ -409,8 +409,8 @@ Y, como se verá a continuación, si no son triviales, varios de estos problemas
 </p>
 </div>
 </div>
-<div id="outline-container-orgb1a0535" class="outline-4">
-<h4 id="orgb1a0535"><span class="section-number-4">1.2.2.</span> Solución</h4>
+<div id="outline-container-org42ebf48" class="outline-4">
+<h4 id="org42ebf48"><span class="section-number-4">1.2.2.</span> Solución</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Sea \(N_{i, j}\) la cantidad de submatrices iguales cuya esquina inferior derecha es la celda \(A_{i, j}\). Si denotamos con \(N_{\text{total}}\) a la solución del problema original, entonces \(N_{\text{total}} = \sum N_{i, j}\). Donde la suma es sobre todas las posibles esquinas inferiores derechas \((i, j)\) (que son todas las \(N \times M\) posibles celdas en la matriz).
@@ -421,14 +421,14 @@ Sea \(N_{i, j}\) la cantidad de submatrices iguales cuya esquina inferior derech
 </p>
 
 
-<div id="org58e4791" class="figure">
+<div id="orgf209c24" class="figure">
 <p><img src="./redun-1.svg" alt="redun-1.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figura 2: </span>Dos submatrices iguales que terminan en \((6, 11)\).</p>
 </div>
 
 
-<div id="org89f8644" class="figure">
+<div id="org0427349" class="figure">
 <p><img src="./redun-2.svg" alt="redun-2.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figura 3: </span>Dos submatrices iguales que terminan en \((6, 12)\) y que son extensiones de las anteriores submatrices.</p>
@@ -447,7 +447,7 @@ Usando el ejemplo anterior para dos submatrices que terminan en \((6, 12)\). Se 
 </p>
 
 
-<div id="org36f8bda" class="figure">
+<div id="org7e50988" class="figure">
 <p><img src="./corr.svg" alt="corr.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figura 4: </span>Correspondencia entre dos submatrices con esquina inferior derecha \((6, 12)\) con celdas <b>identificadoras</b>.</p>
@@ -458,7 +458,7 @@ Hablando más sobre las submatrices que terminan en \((6, 12)\). Podemos con la 
 </p>
 
 
-<div id="org24fe431" class="figure">
+<div id="orgcf350e7" class="figure">
 <p><img src="./6-12-mono.svg" alt="6-12-mono.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figura 5: </span>Ilustración de todas las posibles esquinas superiores izquierdas para la esquina inferior derecha \((6, 12)\). Todas las celdas resaltadas en rojo son permisibles, todas las que solo están en gris son celdas iguales pero no permisibles (ya que generarían una submatriz con diferentes valores).</p>
@@ -481,7 +481,7 @@ Podemos con este diagrama hacer algunas observaciones generales.
 </p>
 
 
-<div id="orgb78504e" class="figure">
+<div id="orgfa49805" class="figure">
 <p><img src="./6-12-nonmono.svg" alt="6-12-nonmono.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figura 6: </span>Descomposición de una solución en rectángulos.</p>
@@ -504,14 +504,14 @@ Esto se puede observar si se comparan las áreas del problema \(N_{6, 6}\) y la 
 </p>
 
 
-<div id="org45e64af" class="figure">
+<div id="org5b84cea" class="figure">
 <p><img src="./6-6.svg" alt="6-6.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figura 7: </span>Solución para esquina inferior derecha \((6, 6)\).</p>
 </div>
 
 
-<div id="org8298d9f" class="figure">
+<div id="org8018cfa" class="figure">
 <p><img src="./6-7.svg" alt="6-7.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figura 8: </span>Solución para esquina inferior derecha \((6, 7)\), la nueva área verde tuvo que <b>consumir</b> a la anterior área verde, reduciendo su altura y sumando su ancho.</p>
@@ -539,7 +539,7 @@ Esto se puede observar si se comparan las áreas del problema \(N_{6, 6}\) y la 
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Miguel</p>
-<p class="date">Created: 2026-02-23 Mon 19:59</p>
+<p class="date">Created: 2026-02-23 Mon 20:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
